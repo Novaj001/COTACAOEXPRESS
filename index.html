@@ -1,17 +1,30 @@
 <!doctype html>
-<html lang="pt-MZ">
+<html lang="pt-MZ" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Cotação Express — Plataforma Expandida (Canvas Style)</title>
-  <meta name="description" content="Versão expandida e moderna do site Cotação Express — interface tipo 'canvas', componentes, animações, formulário avançado, painel administrativo mock e muito mais." />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cotação Express — Importação segura da China</title>
+  <meta name="description" content="Peça uma cotação completa para importar da China com segurança: preço do fornecedor, frete, impostos e prazos. Atendimento em 3–6h via WhatsApp." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Cotação Express" />
+  <link rel="canonical" href="https://www.seusite.com/" />
   <meta name="theme-color" content="#00121a" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet">
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Cotação Express — Importação segura da China" />
+  <meta property="og:description" content="Cotação em 3–6 horas via WhatsApp. Sourcing, inspeção, logística aérea e marítima." />
+  <meta property="og:url" content="https://www.seusite.com/" />
+  <meta property="og:image" content="https://www.seusite.com/cover.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Tailwind via CDN for quick prototyping -->
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -29,8 +42,15 @@
             shimmer: 'shimmer 2.4s linear infinite'
           },
           keyframes: {
-            float: { '0%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-8px)' }, '100%': { transform: 'translateY(0)' } },
-            shimmer: { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } }
+            float: {
+              '0%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-8px)' },
+              '100%': { transform: 'translateY(0)' }
+            },
+            shimmer: {
+              '0%': { backgroundPosition: '-200% 0' },
+              '100%': { backgroundPosition: '200% 0' }
+            }
           }
         }
       }
@@ -38,166 +58,138 @@
   </script>
 
   <!-- Icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 
   <style>
     :root { --bg-1:#00121a; --bg-2:#001f2e; --muted:#9fbec8; --glass: rgba(255,255,255,0.03); }
     html,body{ height:100%; margin:0; font-family:Inter, Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; background: radial-gradient(circle at 10% 10%, #001529 0%, #001221 30%, #00121a 100%); color:#eafcff; }
-    .glass{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.02); }
-    .card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06)); border-radius:14px; padding:1rem; border:1px solid rgba(255,255,255,0.03); box-shadow:0 20px 60px rgba(0,0,0,0.6); }
-    .neon-input{ background: rgba(0,0,0,0.36); border:1px solid rgba(255,255,255,0.035); color:#eaffff; padding:10px 12px; border-radius:10px; width:100%; }
-    .neon-input:focus{ outline:none; box-shadow:0 8px 40px rgba(0,240,255,0.06); border-color:var(--accent); }
-    .dropzone{ border:2px dashed rgba(0,240,255,0.08); border-radius:12px; padding:18px; cursor:pointer; }
-    .wa-float{ position:fixed; right:18px; bottom:18px; z-index:60; width:64px; height:64px; display:grid; place-items:center; border-radius:999px; box-shadow:0 18px 40px rgba(0,0,0,0.06); background: linear-gradient(135deg,#06b6d4,#0ea5b8); }
+    .glass{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.06); }
+    .card{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06)); border-radius:14px; padding:1rem; border:1px solid rgba(255,255,255,0.06); box-shadow:0 20px 60px rgba(0,0,0,0.6); }
+    .neon-input{ background: rgba(0,0,0,0.36); border:1px solid rgba(255,255,255,0.12); color:#eaffff; padding:10px 12px; border-radius:10px; width:100%; }
+    .neon-input:focus{ outline:none; box-shadow:0 8px 40px rgba(0,240,255,0.08); border-color:var(--accent); }
+    .dropzone{ border:2px dashed rgba(0,240,255,0.18); border-radius:12px; padding:18px; cursor:pointer; }
+    .wa-float{ position:fixed; right:18px; bottom:18px; z-index:60; width:64px; height:64px; display:grid; place-items:center; border-radius:999px; box-shadow:0 18px 40px rgba(0,0,0,0.18); background: linear-gradient(135deg,#06b6d4,#0ea5b8); transition: transform .2s ease; }
+    .wa-float:hover{ transform: scale(1.05); }
     .muted{ color:var(--muted); }
     .accent-text{ color:var(--accent); font-family:Poppins, Inter, sans-serif; }
-
-    /* Canvas-like hero background (visual interest) */
     .hero-canvas{ position:relative; overflow:hidden; border-radius:16px; }
     .hero-canvas canvas{ position:absolute; inset:0; width:100%; height:100%; z-index:0; }
     .hero-foreground{ position:relative; z-index:5; }
-
-    /* responsive helpers */
+    .toast{ position:relative; opacity:0; transform: translateY(8px); animation: toastIn .25s forwards; }
+    @keyframes toastIn { to { opacity:1; transform: translateY(0); } }
     @media (max-width:768px){ .desktop-only{ display:none!important; } }
+    @media (prefers-reduced-motion: reduce){ *{ animation: none !important; transition: none !important; } }
+    /* Mobile menu */
+    .mmask{ position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:70; }
+    .msheet{ transform: translateY(8%); opacity:.0; transition: all .2s ease; }
+    .mmask.show .msheet{ transform: translateY(0); opacity:1; }
   </style>
-</head>
-<body class="antialiased leading-normal">
 
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Cotação Express",
+    "url": "https://www.seusite.com/",
+    "logo": "https://www.seusite.com/logo.png",
+    "sameAs": ["https://wa.me/258833869285"],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "telephone": "+258 83 386 9285",
+      "contactType": "customer support",
+      "areaServed": "MZ",
+      "availableLanguage": ["pt", "en"]
+    }]
+  }
+  </script>
+</head>
+
+<body class="antialiased leading-normal" id="top">
   <!-- HEADER -->
-  <header class="glass fixed top-0 left-0 right-0 z-50">
+  <header class="glass fixed top-0 left-0 right-0 z-50" role="banner">
     <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
       <a href="#top" class="flex items-center gap-3" aria-label="Cotação Express - Início">
         <div class="rounded-lg p-2 bg-gradient-to-tr from-accent to-accent2 shadow-neon">
-          <i class="fa-solid fa-ship text-lg" style="color:#00121a"></i>
+          <i class="fa-solid fa-ship text-lg" aria-hidden="true" style="color:#dbe0e2"></i>
         </div>
         <div>
           <div class="text-lg font-extrabold accent-text">Cotação Express</div>
           <div class="text-xs muted">Importação simplificada • Resposta rápida</div>
         </div>
       </a>
-
-      <nav class="hidden md:flex items-center gap-6">
+      <nav class="hidden md:flex items-center gap-6" role="navigation" aria-label="Navegação principal">
         <a class="muted hover:text-white transition" href="#como-funciona">Como funciona</a>
         <a class="muted hover:text-white transition" href="#servicos">Serviços</a>
         <a class="muted hover:text-white transition" href="#logistica">Logística</a>
         <a class="muted hover:text-white transition" href="#precos">Preços</a>
         <a class="muted hover:text-white transition" href="#faq">FAQ</a>
-        <a id="ctaHeader" href="#pedido" class="ml-2 px-4 py-2 rounded-xl text-sm font-semibold" style="background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#001018;">Quero minha cotação</a>
+        <a id="ctaHeader" href="#pedido" class="ml-2 px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-accent to-accent2 text-slate-900/80">Quero minha cotação</a>
       </nav>
-
       <div class="md:hidden">
         <button id="menuBtn" class="p-2 rounded-md bg-white/5" aria-label="Abrir menu"><i class="fa-solid fa-bars"></i></button>
       </div>
     </div>
   </header>
+  <div style="height:78px"></div>
 
-  <div style="height:78px;"></div>
-
-  <main id="top" class="max-w-7xl mx-auto px-6 pb-28">
-
-    <!-- HERO com CANVAS -->
+  <main class="max-w-7xl mx-auto px-6 pb-28" role="main">
+    <!-- HERO -->
     <section class="grid md:grid-cols-2 gap-8 items-center mt-6">
       <div class="hero-foreground">
-        <div class="inline-flex items-center gap-2 bg-black/30 border border-cyan-700/12 rounded-full px-3 py-1 text-xs mb-4">
-          <i class="fa-regular fa-clock"></i> Resposta em <strong>3–6 horas</strong> (via WhatsApp)
+        <div class="inline-flex items-center gap-2 bg-black/30 border border-cyan-700/20 rounded-full px-3 py-1 text-xs mb-4">
+          <i class="fa-regular fa-clock" aria-hidden="true"></i> Resposta em <strong>3–6 horas</strong> (via WhatsApp)
         </div>
-
         <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4">Importe da China com <span class="accent-text">segurança, compliance e economia</span></h1>
-        <p class="muted mb-6">Envie foto, link ou descreva o produto — receb a cotação completa com preço do fornecedor, opções de frete, impostos e tempo estimado. Pagamentos: M-Pesa, Kuenha, Transferência bancária.</p>
-
+        <p class="muted mb-6">Envie foto, link ou descreva o produto — <strong>receba</strong> a cotação completa com preço do fornecedor, opções de frete, impostos e tempo estimado. Pagamentos: M-Pesa, Kuenha, Transferência bancária.</p>
         <div class="flex gap-3 mb-6 flex-wrap">
-          <a id="heroCTA" href="#pedido" class="inline-flex items-center gap-3 px-6 py-3 rounded-2xl" style="background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#00121a; font-weight:700;"> <i class="fa-solid fa-upload"></i> Solicitar Cotação </a>
-          <a href="#vantagens" class="inline-flex items-center gap-3 px-5 py-3 rounded-2xl border border-white/6 text-sm muted">Ver vantagens</a>
+          <a id="heroCTA" href="#pedido" class="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-gradient-to-r from-accent to-accent2 text-slate-900/90 font-bold">
+            <i class="fa-solid fa-upload" aria-hidden="true"></i> Solicitar Cotação
+          </a>
+          <a href="#vantagens" class="inline-flex items-center gap-3 px-5 py-3 rounded-2xl border border-white/10 text-sm muted">Ver vantagens</a>
         </div>
-
         <div class="flex items-center gap-4 flex-wrap">
-          <div class="card px-4 py-3 text-center">
-            <div class="text-2xl font-bold accent-text">+1.000</div>
-            <div class="text-xs muted mt-1">Clientes satisfeitos</div>
-          </div>
-          <div class="card px-4 py-3 text-center">
-            <div class="text-2xl font-bold accent-text">4.9★</div>
-            <div class="text-xs muted mt-1">Avaliação média</div>
-          </div>
-          <div class="card px-4 py-3 text-center">
-            <div class="text-2xl font-bold accent-text">Desde 2021</div>
-            <div class="text-xs muted mt-1">Experiência</div>
-          </div>
+          <div class="card px-4 py-3 text-center" aria-label="Clientes satisfeitos"><div class="text-2xl font-bold accent-text">+1.000</div><div class="text-xs muted mt-1">Clientes satisfeitos</div></div>
+          <div class="card px-4 py-3 text-center" aria-label="Avaliação média"><div class="text-2xl font-bold accent-text">4.9★</div><div class="text-xs muted mt-1">Avaliação média</div></div>
+          <div class="card px-4 py-3 text-center" aria-label="Desde 2021"><div class="text-2xl font-bold accent-text">Desde 2021</div><div class="text-xs muted mt-1">Experiência</div></div>
         </div>
       </div>
 
       <div class="card hero-canvas p-6 relative">
         <canvas id="heroCanvas" width="1200" height="700" aria-hidden="true"></canvas>
         <div class="relative z-10 hero-visual">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1520087997590-6f0b54f5a3a3?q=80&w=1200&auto=format&fit=crop" alt="Produtos importados" class="rounded-lg w-full h-56 object-cover mb-4 shadow-lg">
-
+          <video controls autoplay muted loop playsinline class="rounded-lg w-full h-[400px] object-cover mb-4 shadow-lg" poster="cover.jpg" preload="metadata">
+            <source src="vd1.mp4" type="video/mp4" />
+            Seu navegador não suporta vídeos em HTML5.
+          </video>
           <div class="grid grid-cols-2 gap-3">
-            <div class="p-3 bg-black/30 rounded-lg">
-              <div class="text-xs muted">Entrega estimada</div>
-              <div class="font-bold accent-text">30–45 dias</div>
-            </div>
-            <div class="p-3 bg-black/30 rounded-lg">
-              <div class="text-xs muted">Pagamento</div>
-              <div class="font-bold accent-text">M-Pesa / Kuenha</div>
-            </div>
+            <div class="p-3 bg-black/30 rounded-lg"><div class="text-xs muted">Entrega estimada</div><div class="font-bold accent-text">30–45 dias</div></div>
+            <div class="p-3 bg-black/30 rounded-lg"><div class="text-xs muted">Pagamento</div><div class="font-bold accent-text">M-Pesa / Emola</div></div>
           </div>
-
           <div class="mt-3 text-sm muted">Quer uma resposta ainda mais rápida? Use o botão WhatsApp e envie a foto direto no chat.</div>
         </div>
       </div>
     </section>
 
-    <!-- COMO FUNCIONA (DETALHADO) -->
-    <section id="como-funciona" class="mt-12">
-      <h2 class="text-2xl font-extrabold accent-text mb-4">Como funciona</h2>
-
+    <!-- COMO FUNCIONA -->
+    <section id="como-funciona" class="mt-12" aria-labelledby="comoTitle">
+      <h2 id="comoTitle" class="text-2xl font-extrabold accent-text mb-4">Como funciona</h2>
       <div class="grid md:grid-cols-4 gap-4">
-        <div class="card p-4 text-center">
-          <div class="text-3xl font-extrabold accent-text">1</div>
-          <div class="muted mt-2">Envie foto / link / descrição</div>
-          <p class="muted text-sm mt-2">Aceitamos imagens, links (Alibaba, 1688, AliExpress) e descrições detalhadas.</p>
-        </div>
-        <div class="card p-4 text-center">
-          <div class="text-3xl font-extrabold accent-text">2</div>
-          <div class="muted mt-2">Verificação & negociação</div>
-          <p class="muted text-sm mt-2">Validamos fornecedores, confirmamos MOQ (quantidade mínima) e negociamos preço e prazo.</p>
-        </div>
-        <div class="card p-4 text-center">
-          <div class="text-3xl font-extrabold accent-text">3</div>
-          <div class="muted mt-2">Cotação detalhada</div>
-          <p class="muted text-sm mt-2">Enviamos preço do produto, frete, impostos, seguros e gargalos logísticos.</p>
-        </div>
-        <div class="card p-4 text-center">
-          <div class="text-3xl font-extrabold accent-text">4</div>
-          <div class="muted mt-2">Envio & suporte</div>
-          <p class="muted text-sm mt-2">Acompanhamos envio, fazemos despacho aduaneiro e suporte pós-entrega.</p>
-        </div>
-      </div>
-
-      <div class="mt-6 grid md:grid-cols-3 gap-4">
-        <div class="card p-4">
-          <h3 class="font-bold">Inspeção Pré-Envio</h3>
-          <p class="muted text-sm mt-2">Opção para inspeção de qualidade na fábrica antes do envio (relatório com fotos e medições).</p>
-        </div>
-        <div class="card p-4">
-          <h3 class="font-bold">Garantia de Pagamento Seguro</h3>
-          <p class="muted text-sm mt-2">Pagamento seguro com escrow ou instruções de pagamento para reduzir risco de fraude.</p>
-        </div>
-        <div class="card p-4">
-          <h3 class="font-bold">Opções de Embalagem</h3>
-          <p class="muted text-sm mt-2">Sugestões de embalagem para reduzir volumetria e proteger itens sensíveis.</p>
-        </div>
+        <div class="card p-4 text-center"><div class="text-3xl font-extrabold accent-text">1</div><div class="muted mt-2">Envie foto / link / descrição</div><p class="muted text-sm mt-2">Aceitamos imagens, links (Alibaba, 1688, AliExpress) e descrições detalhadas.</p></div>
+        <div class="card p-4 text-center"><div class="text-3xl font-extrabold accent-text">2</div><div class="muted mt-2">Verificação & negociação</div><p class="muted text-sm mt-2">Validamos fornecedores, confirmamos MOQ e negociamos preço e prazo.</p></div>
+        <div class="card p-4 text-center"><div class="text-3xl font-extrabold accent-text">3</div><div class="muted mt-2">Cotação detalhada</div><p class="muted text-sm mt-2">Preço do produto, frete, impostos, seguros e gargalos logísticos.</p></div>
+        <div class="card p-4 text-center"><div class="text-3xl font-extrabold accent-text">4</div><div class="muted mt-2">Envio & suporte</div><p class="muted text-sm mt-2">Acompanhamos envio, despacho aduaneiro e suporte pós-entrega.</p></div>
       </div>
     </section>
 
-    <!-- FORMULÁRIO AMPLIADO (Pedido + Preferências + Uploads) -->
-    <section id="pedido" class="mt-12">
+    <!-- FORMULÁRIO -->
+    <section id="pedido" class="mt-12" aria-labelledby="pedidoTitle">
       <div class="grid lg:grid-cols-3 gap-6">
         <div class="lg:col-span-2 card p-6">
           <div class="flex items-start justify-between">
             <div>
-              <h3 class="text-xl font-extrabold accent-text mb-1">Solicitar Cotação — Formulário Avançado</h3>
-              <p class="muted">Preenche o formulário com o máximo de detalhe para receber uma cotação precisa. Campos com * são obrigatórios.</p>
+              <h3 id="pedidoTitle" class="text-xl font-extrabold accent-text mb-1">Solicitar Cotação</h3>
+              <p class="muted">Preencha o formulário com o máximo de detalhe para receber uma cotação precisa. Campos com * são obrigatórios.</p>
             </div>
             <div class="text-right">
               <div class="text-xs muted">Atendimento</div>
@@ -206,44 +198,40 @@
           </div>
 
           <form id="mainForm" class="mt-6 space-y-4" autocomplete="on" novalidate>
-
             <div class="grid md:grid-cols-2 gap-3">
               <div>
-                <label class="text-xs muted mb-1 block">Nome completo *</label>
-                <input id="nome" name="nome" type="text" class="neon-input" placeholder="Ex.: João Manuel" required aria-required="true" />
+                <label for="nome" class="text-xs muted mb-1 block">Nome completo *</label>
+                <input id="nome" name="nome" type="text" class="neon-input" placeholder="Ex.: João Silva" required aria-required="true" />
               </div>
-
               <div>
-                <label for="whatsapp" class="text-xs muted mb-1 block">WhatsApp (obrigatório) *</label>
+                <label for="telefone" class="text-xs muted mb-1 block">WhatsApp (obrigatório) *</label>
                 <div class="relative">
-                  <input id="telefone" name="telefone" type="tel" class="neon-input pl-12" placeholder="Ex.: 841234567" required minlength="9" maxlength="12" />
+                  <input id="telefone" name="telefone" type="tel" class="neon-input pl-12" placeholder="Ex.: 841234567" required minlength="9" maxlength="12" inputmode="numeric" pattern="^[78]\d{8}$" aria-describedby="telHelp" />
                   <div class="absolute left-3 top-2 text-sm muted">+258</div>
                 </div>
+                <div id="telHelp" class="text-[11px] muted mt-1">Formato Moçambique: 9 dígitos iniciando em 7 ou 8.</div>
               </div>
             </div>
 
             <div>
-              <label class="text-xs muted mb-1 block">Nome do produto / Link (Alibaba / 1688 / AliExpress) *</label>
+              <label for="produto" class="text-xs muted mb-1 block">Nome do produto / Link (Alibaba / 1688 / AliExpress) *</label>
               <input id="produto" name="produto" type="text" class="neon-input" placeholder="Ex.: Air Fryer 6.5L / https://..." required />
             </div>
 
             <div class="grid md:grid-cols-3 gap-3">
               <div>
-                <label class="text-xs muted mb-1 block">Quantidade *</label>
+                <label for="quantidade" class="text-xs muted mb-1 block">Quantidade *</label>
                 <input id="quantidade" name="quantidade" type="number" min="1" step="1" class="neon-input" value="1" required />
               </div>
-
               <div>
-                <label class="text-xs muted mb-1 block">Orçamento (MZN) (opcional)</label>
+                <label for="orcamento" class="text-xs muted mb-1 block">Orçamento (MZN) (opcional)</label>
                 <input id="orcamento" name="orcamento" type="number" class="neon-input" placeholder="Ex.: 5000" />
               </div>
-
               <div>
-                <label class="text-xs muted mb-1 block">Incoterm (opcional)</label>
+                <label for="incoterm" class="text-xs muted mb-1 block">Incoterm (opcional)</label>
                 <select id="incoterm" class="neon-input">
                   <option value="">Sem preferência</option>
-                  <option>EXW</option>
-                  <option>FCA</option>
+                  <option>FAS</option>
                   <option>FOB</option>
                   <option>CIF</option>
                 </select>
@@ -251,18 +239,18 @@
             </div>
 
             <div>
-              <label class="text-xs muted mb-1 block">Observações (tamanho, voltagem, cor, marca, restrições) *</label>
-              <textarea id="obs" name="obs" rows="4" class="neon-input" placeholder="Ex.: 220V, cor preta, envio Maputo, inspeção pré-envio."></textarea>
+              <label for="obs" class="text-xs muted mb-1 block">Observações (tamanho, voltagem, cor, marca, restrições) *</label>
+              <textarea id="obs" name="obs" rows="4" class="neon-input" placeholder="Ex.: 220V, cor preta, envio Maputo, inspeção pré-envio." required></textarea>
             </div>
 
-            <!-- Multi-file uploads + compressões -->
+            <!-- Uploads -->
             <div>
               <label class="text-xs muted mb-1 block">Imagens / Documentos (opcional)</label>
               <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Área para arrastar imagens">
-                <input id="arquivo" name="arquivo" type="file" accept="image/*,application/pdf" class="visually-hidden" multiple />
+                <input id="arquivo" name="arquivo" type="file" accept="image/*,application/pdf" class="sr-only" multiple />
                 <div id="dzContent" class="flex items-center justify-between gap-3">
                   <div class="flex items-center gap-3">
-                    <i class="fa-solid fa-image text-2xl muted"></i>
+                    <i class="fa-solid fa-image text-2xl muted" aria-hidden="true"></i>
                     <div>
                       <div class="muted">Clique ou arraste aqui para anexar (JPG/PNG/PDF — máx. 6 MB por arquivo)</div>
                       <div class="text-xs muted">Compressão automática para uploads de imagem</div>
@@ -272,56 +260,46 @@
                     <button id="pickFileBtn" type="button" class="px-3 py-2 rounded bg-white/5">Selecionar</button>
                   </div>
                 </div>
-
                 <div id="previewGrid" class="hidden mt-3 grid grid-cols-2 gap-3"></div>
               </div>
             </div>
 
             <div class="flex items-start gap-3">
               <input id="consent" name="consent" type="checkbox" class="mt-1" required />
-              <label for="consent" class="muted">Concordo em ser contatado via WhatsApp para receber a cotação (tempo estimado: 3–6 horas).</label>
+              <label for="consent" class="muted">Concordo em ser contactado via WhatsApp para receber a cotação (tempo estimado: 3–6 horas).</label>
             </div>
 
             <div class="grid md:grid-cols-3 gap-3 items-center">
-              <button id="submitBtn" type="submit" class="col-span-2 px-6 py-3 rounded-2xl" style="background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#00121a; font-weight:700;"> <i class="fa-solid fa-paper-plane"></i> Enviar pedido </button>
+              <button id="submitBtn" type="submit" class="col-span-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-yellow-300 to-orange-400 text-[#00121a] font-bold">
+                <i class="fa-solid fa-paper-plane"></i> Enviar pedido
+              </button>
               <div class="text-xs muted text-center md:text-right">Se o upload falhar, envie a imagem pelo WhatsApp após abrir uma conversa.</div>
             </div>
-
             <div class="text-xs muted">Ao enviar, iremos validar e negociar com fornecedores e responder via WhatsApp.</div>
-
           </form>
-
         </div>
 
-        <!-- SIDEBAR RICO -->
-        <aside class="card p-6">
+        <!-- Sidebar -->
+        <aside class="card p-6" aria-label="Dicas e contacto">
           <h4 class="font-bold accent-text mb-3">Dicas rápidas</h4>
           <ul class="text-sm muted list-disc list-inside space-y-2 mb-4">
             <li>Anexe foto nítida com fundo claro.</li>
             <li>Informe voltagem, cor e materiais para evitar devoluções.</li>
-            <li>Se possível anexe link do produto no Alibaba / 1688.</li>
+            <li>Se possível, anexe link do produto no Alibaba / 1688.</li>
             <li>Número WhatsApp: 9 dígitos (sem traços) para Moçambique.</li>
           </ul>
-
           <div>
-            <h5 class="font-semibold muted">Contato</h5>
-            <div class="mt-2 text-sm"> WhatsApp: <a id="waContact" href="#" class="text-accent font-medium">+258 83 386 9285</a></div>
+            <h5 class="font-semibold muted">Contacto</h5>
+            <div class="mt-2 text-sm">WhatsApp: <a id="waContact" href="#" class="text-accent font-medium" target="_blank" rel="noopener">+258 83 386 9285</a></div>
             <div class="mt-1 text-sm muted">E-mail: <span id="siteEmail">novadigitalj@gmail.com</span></div>
           </div>
-
           <div class="mt-4">
             <button id="faqQuick" class="px-4 py-2 rounded bg-white/5">Ver FAQ</button>
           </div>
-
-          <hr class="border-white/6 my-4" />
-
-          <div class="text-sm muted">
-            <strong>Horário de atendimento:</strong>
-            <div class="mt-1">Seg — Sex, 08:30 — 18:00 GMT+2</div>
-          </div>
-
+          <hr class="border-white/10 my-4" />
+          <div class="text-sm muted"><strong>Horário de atendimento:</strong><div class="mt-1">Seg — Sex, 08:30 — 18:00 GMT+2</div></div>
           <div class="mt-4">
-            <a href="#precos" class="inline-block px-4 py-2 rounded bg-gradient-to-tr from-yellow-400 to-orange-400 text-[#00121a] font-semibold">Ver Planos & Tarifas</a>
+            <a href="#logistica" class="inline-block px-4 py-2 rounded bg-gradient-to-tr from-yellow-400 to-orange-400 text-[#00121a] font-semibold">LOGISTICA & TRANSPORTE</a>
           </div>
         </aside>
       </div>
@@ -331,621 +309,410 @@
     <section id="vantagens" class="mt-12">
       <h2 class="text-2xl font-extrabold accent-text mb-4">Vantagens</h2>
       <div class="grid md:grid-cols-3 gap-4">
-        <div class="card p-4">
-          <i class="fa-solid fa-bolt text-2xl accent-text"></i>
-          <h3 class="font-bold mt-3">Rapidez</h3>
-          <p class="muted mt-2">Respostas em poucas horas — agilidade para não perder oportunidades.</p>
-        </div>
-        <div class="card p-4">
-          <i class="fa-solid fa-shield-halved text-2xl accent-text"></i>
-          <h3 class="font-bold mt-3">Segurança</h3>
-          <p class="muted mt-2">Verificação de fornecedores e processos transparentes.</p>
-        </div>
-        <div class="card p-4">
-          <i class="fa-solid fa-handshake text-2xl accent-text"></i>
-          <h3 class="font-bold mt-3">Apoio completo</h3>
-          <p class="muted mt-2">Negociação, logística e assistência sem pagamento extra para cotação.</p>
-        </div>
+        <div class="card p-4"><i class="fa-solid fa-bolt text-2xl accent-text" aria-hidden="true"></i><h3 class="font-bold mt-3">Rapidez</h3><p class="muted mt-2">Respostas em poucas horas — agilidade para não perder oportunidades.</p></div>
+        <div class="card p-4"><i class="fa-solid fa-shield-halved text-2xl accent-text" aria-hidden="true"></i><h3 class="font-bold mt-3">Segurança</h3><p class="muted mt-2">Verificação de fornecedores e processos transparentes.</p></div>
+        <div class="card p-4"><i class="fa-solid fa-handshake text-2xl accent-text" aria-hidden="true"></i><h3 class="font-bold mt-3">Apoio completo</h3><p class="muted mt-2">Negociação, logística e assistência sem pagamento extra para cotação.</p></div>
       </div>
     </section>
 
-    <!-- SERVIÇOS DETALHADOS -->
+    <!-- SERVIÇOS -->
     <section id="servicos" class="mt-12">
       <h2 class="text-2xl font-extrabold accent-text mb-4">Serviços</h2>
-
       <div class="grid lg:grid-cols-3 gap-6">
-        <div class="card p-6">
-          <h3 class="font-bold">Sourcing & Fornecedores</h3>
-          <p class="muted text-sm mt-2">Procuramos fornecedores confiáveis, verificamos certificações e comparamos preços.</p>
-          <ul class="mt-3 text-sm muted list-disc list-inside space-y-2">
-            <li>Validação de fábrica e credenciais</li>
-            <li>Comparação de MOQ e prazos</li>
-            <li>Relatórios de conformidade</li>
-          </ul>
-        </div>
-
-        <div class="card p-6">
-          <h3 class="font-bold">Controle de Qualidade</h3>
-          <p class="muted text-sm mt-2">Inspeção pré-embarque, testes funcionais e verificação de embalagens.</p>
-          <ul class="mt-3 text-sm muted list-disc list-inside space-y-2">
-            <li>Inspeção de lote</li>
-            <li>Testes de amostra</li>
-            <li>Relatório fotográfico</li>
-          </ul>
-        </div>
-
-        <div class="card p-6">
-          <h3 class="font-bold">Logística & Frete</h3>
-          <p class="muted text-sm mt-2">Opções aéreas, marítimas e door-to-door com parceiros globais.</p>
-          <ul class="mt-3 text-sm muted list-disc list-inside space-y-2">
-            <li>Tarifas competitivas</li>
-            <li>Seguro e despacho aduaneiro</li>
-            <li>Rastreamento e atualizações</li>
-          </ul>
-        </div>
+        <div class="card p-6"><h3 class="font-bold">Sourcing & Fornecedores</h3><p class="muted text-sm mt-2">Procuramos fornecedores confiáveis, verificamos certificações e comparamos preços.</p><ul class="mt-3 text-sm muted list-disc list-inside space-y-2"><li>Validação de fábrica e credenciais</li><li>Comparação de MOQ e prazos</li><li>Relatórios de conformidade</li></ul></div>
+        <div class="card p-6"><h3 class="font-bold">Controle de Qualidade</h3><p class="muted text-sm mt-2">Inspeção pré-embarque, testes funcionais e verificação de embalagens.</p><ul class="mt-3 text-sm muted list-disc list-inside space-y-2"><li>Inspeção de lote</li><li>Testes de amostra</li><li>Relatório fotográfico</li></ul></div>
+        <div class="card p-6"><h3 class="font-bold">Logística & Frete</h3><p class="muted text-sm mt-2">Opções aéreas, marítimas e door-to-door com parceiros globais.</p><ul class="mt-3 text-sm muted list-disc list-inside space-y-2"><li>Tarifas competitivas</li><li>Seguro e despacho aduaneiro</li><li>Rastreamento e atualizações</li></ul></div>
       </div>
     </section>
 
-    <!-- LOGÍSTICA EXPANDIDA (Tabelas e regras) -->
+    <!-- LOGÍSTICA -->
     <section id="logistica" class="mt-12">
       <h2 class="text-3xl font-extrabold accent-text mb-3">Logística e Transporte</h2>
-      <p class="muted mb-6">Escolha a solução ideal para sua encomenda. Abaixo mostramos tarifas aéreas por categoria e regras para transporte marítimo (CBM e valores mínimos). Todos os valores indicativos incluem despacho aduaneiro básico.</p>
-
+      <p class="muted mb-6">Escolha a solução ideal para sua encomenda. Valores indicativos incluem despacho aduaneiro básico.</p>
       <div class="grid lg:grid-cols-2 gap-8">
-        <!-- AÉREO -->
+        <!-- Aéreo -->
         <div class="card p-6">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-semibold text-yellow-400">✈ Transporte Aéreo</h3>
-            <div class="text-xs muted">Rápido • Ideal para itens de alto valor</div>
-          </div>
-
+          <div class="flex items-center justify-between mb-4"><h3 class="text-xl font-semibold text-yellow-400">✈ Transporte Aéreo</h3><div class="text-xs muted">Rápido • Ideal para alto valor</div></div>
           <div class="overflow-x-auto">
             <table class="w-full text-sm">
-              <thead>
-                <tr class="bg-gray-800 text-left text-yellow-300">
-                  <th class="p-3">Produto / Categoria</th>
-                  <th class="p-3">Tarifa (MZN)</th>
-                  <th class="p-3">Observações</th>
-                </tr>
-              </thead>
+              <thead><tr class="bg-gray-800 text-left text-yellow-300"><th class="p-3">Produto / Categoria</th><th class="p-3">Tarifa (MZN)</th><th class="p-3">Observações</th></tr></thead>
               <tbody>
-                <tr>
-                  <td class="p-3">Produtos sem bateria</td>
-                  <td class="p-3 font-semibold">2.250 MZN / kg</td>
-                  <td class="p-3 muted">Carga leve, tarifada por peso</td>
-                </tr>
-                <tr>
-                  <td class="p-3">Celulares</td>
-                  <td class="p-3 font-semibold">4.500 MZN / (por unidade)*</td>
-                  <td class="p-3 muted">Tarifa por unidade (alto valor)</td>
-                </tr>
-                <tr>
-                  <td class="p-3">Laptops</td>
-                  <td class="p-3 font-semibold">8.000 MZN / (por unidade)*</td>
-                  <td class="p-3 muted">Tarifa por unidade</td>
-                </tr>
-                <tr>
-                  <td class="p-3">AirPods / Relógio Inteligente</td>
-                  <td class="p-3 font-semibold">950 MZN / (por unidade)</td>
-                  <td class="p-3 muted">Itens pequenos, tarifação fixa</td>
-                </tr>
-                <tr>
-                  <td class="p-3">Câmera e Drone</td>
-                  <td class="p-3 font-semibold">8.000 MZN / (por unidade)*</td>
-                  <td class="p-3 muted">Equipamentos volumosos/valiosos</td>
-                </tr>
+                <tr><td class="p-3">Produtos sem bateria</td><td class="p-3 font-semibold">2.250 MZN / kg</td><td class="p-3 muted">Carga leve, tarifada por peso</td></tr>
+                <tr><td class="p-3">Celulares</td><td class="p-3 font-semibold">4.500 MZN / (por unidade)*</td><td class="p-3 muted">Tarifa por unidade (alto valor)</td></tr>
+                <tr><td class="p-3">Laptops</td><td class="p-3 font-semibold">8.000 MZN / (por unidade)*</td><td class="p-3 muted">Tarifa por unidade</td></tr>
+                <tr><td class="p-3">AirPods / Relógio Inteligente</td><td class="p-3 font-semibold">950 MZN / (por unidade)</td><td class="p-3 muted">Itens pequenos, tarifação fixa</td></tr>
+                <tr><td class="p-3">Câmera e Drone</td><td class="p-3 font-semibold">8.000 MZN / (por unidade)*</td><td class="p-3 muted">Equipamentos volumosos/valiosos</td></tr>
               </tbody>
             </table>
           </div>
-
-          <p class="text-sm muted mt-4">*Para celulares, laptops e câmeras podemos aplicar tarifação dependendo do fornecedor — confirmamos durante a cotação.</p>
+          <p class="text-sm muted mt-4">*Para celulares, laptops e câmeras podemos aplicar tarifação conforme fornecedor — confirmamos durante a cotação.</p>
         </div>
-
-        <!-- MARÍTIMO -->
+        <!-- Marítimo -->
         <div class="card p-6">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-semibold text-blue-400">🚢 Transporte Marítimo</h3>
-            <div class="text-xs muted">Econômico • Ideal para grandes volumes</div>
-          </div>
-
-          <p class="muted mb-4">No transporte marítimo o custo é calculado pelo espaço que a encomenda ocupa (CBM — metro cúbico). Abaixo as regras e valores indicativos:</p>
-
+          <div class="flex items-center justify-between mb-4"><h3 class="text-xl font-semibold text-blue-400">🚢 Transporte Marítimo</h3><div class="text-xs muted">Econômico • Grandes volumes</div></div>
+          <p class="muted mb-4">No marítimo o custo é calculado pelo espaço ocupado (CBM). Regras e valores indicativos:</p>
           <div class="grid gap-3">
-            <div class="card p-3 bg-black/40">
-              <div class="flex justify-between"><div><strong>1 CBM (cargas leves)</strong></div><div class="font-bold">19.200 MZN</div></div>
-              <div class="muted text-sm mt-1">Aplicável para cargas cuja densidade é leve.</div>
-            </div>
-
-            <div class="card p-3 bg-black/40">
-              <div class="flex justify-between"><div><strong>1 CBM (cargas pesadas &gt;100 kg)</strong></div><div class="font-bold">20.600 MZN</div></div>
-              <div class="muted text-sm mt-1">Para mercadorias mais densas/pesadas a partir de 100 kg por item/volume.</div>
-            </div>
-
-            <div class="card p-3 bg-black/40">
-              <div class="flex justify-between"><div><strong>Valor mínimo (≤ 0,2 CBM)</strong></div><div class="font-bold">4.640 MZN (leve) / 4.920 MZN (pesada)</div></div>
-              <div class="muted text-sm mt-1">Se a encomenda não atingir 0,2 CBM, aplicamos o valor mínimo (já inclui despacho aduaneiro básico).</div>
-            </div>
-
-            <div class="card p-3 bg-black/40">
-              <div class="muted text-sm"><strong>Observação:</strong> Cargas muito leves podem ter conversão volumétrica aplicada. Serviços adicionais (armazenagem, seguro, inspeção ao nível do fornecedor) têm orçamento separado.</div>
-            </div>
+            <div class="card p-3 bg-black/40"><div class="flex justify-between"><div><strong>1 CBM (cargas leves)</strong></div><div class="font-bold">19.200 MZN</div></div><div class="muted text-sm mt-1">Para cargas de baixa densidade.</div></div>
+            <div class="card p-3 bg-black/40"><div class="flex justify-between"><div><strong>1 CBM (cargas pesadas &gt;100 kg)</strong></div><div class="font-bold">20.600 MZN</div></div><div class="muted text-sm mt-1">Mercadorias mais densas/pesadas.</div></div>
+            <div class="card p-3 bg-black/40"><div class="flex justify-between"><div><strong>Valor mínimo (≤ 0,2 CBM)</strong></div><div class="font-bold">4.640 MZN (leve) / 4.920 MZN (pesada)</div></div><div class="muted text-sm mt-1">Se não atingir 0,2 CBM, aplica-se o mínimo.</div></div>
+            <div class="card p-3 bg-black/40"><div class="muted text-sm"><strong>Obs.:</strong> Cargas muito leves podem ter conversão volumétrica. Serviços adicionais (armazenagem, seguro, inspeção) têm orçamento separado.</div></div>
           </div>
-
-          <div class="mt-4 text-sm muted">Todos os valores apresentados são indicativos. A cotação final considera peso, dimensões, incoterm e serviços adicionais.</div>
+          <div class="text-center mt-4">
+            <a id="logisticaCTA" class="inline-block px-6 py-3 rounded-xl font-bold bg-gradient-to-r from-yellow-300 to-orange-400 text-[#00121a]" href="#" role="button">📞 Fale com um Especialista</a>
+          </div>
         </div>
-      </div>
-
-      <div class="text-center mt-8">
-        <a id="logisticaCTA" class="inline-block px-6 py-4 rounded-xl text-lg font-bold" style="background:linear-gradient(90deg,#ffd166,#ffb703); color:#00121a;" href="#" onclick="openWhatsAppLogistica(event)"> 📞 Fale com um Especialista em Logística </a>
       </div>
     </section>
 
-    <!-- COMPARAÇÃO E VALOR -->
+    <!-- COMPARAÇÃO -->
     <section class="mt-12">
       <h2 class="text-2xl font-extrabold accent-text mb-4">Importar sozinho vs. com a Cotação Express</h2>
       <div class="card p-4 overflow-x-auto">
         <table class="w-full text-sm">
-          <thead>
-            <tr class="text-left">
-              <th class="py-2">Aspecto</th>
-              <th class="py-2">Importar sozinho</th>
-              <th class="py-2">Com Cotação Express</th>
-            </tr>
-          </thead>
+          <thead><tr class="text-left"><th class="py-2">Aspecto</th><th class="py-2">Importar sozinho</th><th class="py-2">Com Cotação Express</th></tr></thead>
           <tbody>
-            <tr class="border-t border-white/6"><td class="py-3">Tempo</td><td class="py-3 muted">Dias a semanas</td><td class="py-3">3–6 horas (resposta inicial)</td></tr>
-            <tr class="border-t border-white/6"><td class="py-3">Risco de fraude</td><td class="py-3 muted">Alto (se sem verificação)</td><td class="py-3">Reduzido (fornecedores selecionados)</td></tr>
-            <tr class="border-t border-white/6"><td class="py-3">Negociação</td><td class="py-3 muted">Por conta própria</td><td class="py-3">Feita por agentes experientes</td></tr>
-            <tr class="border-t border-white/6"><td class="py-3">Frete & impostos</td><td class="py-3 muted">Pode ser confuso</td><td class="py-3">Cotação completa e transparente</td></tr>
+            <tr class="border-t border-white/10"><td class="py-3">Tempo</td><td class="py-3 muted">Dias a semanas</td><td class="py-3">3–6 horas (resposta inicial)</td></tr>
+            <tr class="border-t border-white/10"><td class="py-3">Risco de fraude</td><td class="py-3 muted">Alto (sem verificação)</td><td class="py-3">Reduzido (fornecedores selecionados)</td></tr>
+            <tr class="border-t border-white/10"><td class="py-3">Negociação</td><td class="py-3 muted">Por conta própria</td><td class="py-3">Agentes experientes</td></tr>
+            <tr class="border-t border-white/10"><td class="py-3">Frete & impostos</td><td class="py-3 muted">Pode ser confuso</td><td class="py-3">Cotação completa e transparente</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
-<!-- MARKETPLACE & OFERTAS EXCLUSIVAS -->
-<section id="marketplace" class="mt-12">
-<h2 class="text-2xl font-extrabold accent-text mb-4">Marketplace & Ofertas Exclusivas</h2>
-<p class="muted mb-6">Descubra produtos e serviços de fornecedores confiáveis com preços especiais e promoções imperdíveis.</p>
+    <!-- MARKETPLACE (mock) -->
+    <section id="marketplace" class="mt-12">
+      <h2 class="text-2xl font-extrabold accent-text mb-4">Marketplace & Ofertas Exclusivas</h2>
+      <p class="muted mb-6">Descubra produtos e serviços de fornecedores confiáveis com preços especiais.</p>
+      <div class="grid md:grid-cols-4 gap-6">
+        <!-- Cards -->
+        <div class="card p-4 hover:shadow-xl transition transform hover:-translate-y-1 relative">
+          <span class="absolute top-2 left-2 bg-accent text-slate-900 text-xs px-2 py-1 rounded">Mais Vendido</span>
+          <img src="https://via.placeholder.com/300x200" alt="Peças Automotivas" class="rounded mb-3" loading="lazy" decoding="async" />
+          <h3 class="text-lg font-bold">Peças Automotivas</h3>
+          <p class="muted text-sm">Fornecedor: AutoParts Express</p>
+          <div class="flex justify-between items-center mt-3"><div class="text-xl font-extrabold accent-text">2.500 MZN</div><button class="bg-accent text-slate-900 px-3 py-2 rounded text-sm font-semibold">Ver Oferta</button></div>
+        </div>
+        <div class="card p-4 hover:shadow-xl transition transform hover:-translate-y-1 relative">
+          <span class="absolute top-2 left-2 bg-green-600 text-white text-xs px-2 py-1 rounded">Oferta Relâmpago</span>
+          <img src="https://via.placeholder.com/300x200" alt="Eletrônicos em lote" class="rounded mb-3" loading="lazy" decoding="async" />
+          <h3 class="text-lg font-bold">Eletrônicos em Lote</h3>
+          <p class="muted text-sm">Fornecedor: TechMoç</p>
+          <div class="flex justify-between items-center mt-3"><div class="text-xl font-extrabold accent-text">15.000 MZN</div><button class="bg-accent text-slate-900 px-3 py-2 rounded text-sm font-semibold">Ver Oferta</button></div>
+        </div>
+        <div class="card p-4 hover:shadow-xl transition transform hover:-translate-y-1 relative">
+          <img src="https://via.placeholder.com/300x200" alt="Roupas no atacado" class="rounded mb-3" loading="lazy" decoding="async" />
+          <h3 class="text-lg font-bold">Roupa no Atacado</h3>
+          <p class="muted text-sm">Fornecedor: Moda Global</p>
+          <div class="flex justify-between items-center mt-3"><div class="text-xl font-extrabold accent-text">7.500 MZN</div><button class="bg-accent text-slate-900 px-3 py-2 rounded text-sm font-semibold">Ver Oferta</button></div>
+        </div>
+        <div class="card p-4 hover:shadow-xl transition transform hover:-translate-y-1 relative">
+          <span class="absolute top-2 left-2 bg-yellow-500 text-white text-xs px-2 py-1 rounded">Novo</span>
+          <img src="https://via.placeholder.com/300x200" alt="Materiais de construção" class="rounded mb-3" loading="lazy" decoding="async" />
+          <h3 class="text-lg font-bold">Material de Construção</h3>
+          <p class="muted text-sm">Fornecedor: BuildFast</p>
+          <div class="flex justify-between items-center mt-3"><div class="text-xl font-extrabold accent-text">Sob Consulta</div><button class="bg-accent text-slate-900 px-3 py-2 rounded text-sm font-semibold">Ver Oferta</button></div>
+        </div>
+      </div>
+    </section>
 
-
-<div class="grid md:grid-cols-4 gap-6">
-<!-- Produto 1 -->
-<div class="card p-4 hover:shadow-xl transition transform hover:-translate-y-1 relative">
-<span class="absolute top-2 left-2 bg-accent text-white text-xs px-2 py-1 rounded">Mais Vendido</span>
-<img src="https://via.placeholder.com/300x200" alt="Produto 1" class="rounded mb-3">
-<h3 class="text-lg font-bold">Peças Automotivas</h3>
-<p class="muted text-sm">Fornecedor: AutoParts Express</p>
-<div class="flex justify-between items-center mt-3">
-<div class="text-xl font-extrabold accent-text">2.500 MZN</div>
-<button class="bg-accent text-white px-3 py-2 rounded text-sm">Ver Oferta</button>
-</div>
-</div>
-
-
-<!-- Produto 2 -->
-<div class="card p-4 hover:shadow-xl transition transform hover:-translate-y-1 relative">
-<span class="absolute top-2 left-2 bg-green-600 text-white text-xs px-2 py-1 rounded">Oferta Relâmpago</span>
-<img src="https://via.placeholder.com/300x200" alt="Produto 2" class="rounded mb-3">
-<h3 class="text-lg font-bold">Eletrônicos em Lote</h3>
-<p class="muted text-sm">Fornecedor: TechMoç</p>
-<div class="flex justify-between items-center mt-3">
-<div class="text-xl font-extrabold accent-text">15.000 MZN</div>
-<button class="bg-accent text-white px-3 py-2 rounded text-sm">Ver Oferta</button>
-</div>
-</div>
-
-
-<!-- Produto 3 -->
-<div class="card p-4 hover:shadow-xl transition transform hover:-translate-y-1 relative">
-<img src="https://via.placeholder.com/300x200" alt="Produto 3" class="rounded mb-3">
-<h3 class="text-lg font-bold">Roupa no Atacado</h3>
-<p class="muted text-sm">Fornecedor: Moda Global</p>
-<div class="flex justify-between items-center mt-3">
-<div class="text-xl font-extrabold accent-text">7.500 MZN</div>
-<button class="bg-accent text-white px-3 py-2 rounded text-sm">Ver Oferta</button>
-</div>
-</div>
-
-
-<!-- Produto 4 -->
-<div class="card p-4 hover:shadow-xl transition transform hover:-translate-y-1 relative">
-<span class="absolute top-2 left-2 bg-yellow-500 text-white text-xs px-2 py-1 rounded">Novo</span>
-<img src="https://via.placeholder.com/300x200" alt="Produto 4" class="rounded mb-3">
-<h3 class="text-lg font-bold">Material de Construção</h3>
-<p class="muted text-sm">Fornecedor: BuildFast</p>
-<div class="flex justify-between items-center mt-3">
-<div class="text-xl font-extrabold accent-text">Sob Consulta</div>
-<button class="bg-accent text-white px-3 py-2 rounded text-sm">Ver Oferta</button>
-</div>
-</div>
-</div>
-
-
-<div class="mt-8 flex flex-col md:flex-row justify-between items-center">
-<div class="muted text-sm">Quer ver seu produto aqui? Alcance milhares de clientes em nosso Marketplace.</div>
-<a href="#" class="mt-4 md:mt-0 bg-accent text-white px-6 py-3 rounded font-semibold hover:bg-opacity-90 transition">Quero Vender no Marketplace</a>
-</div>
-</section>
-
-    <!-- EQUIPA / SOBRE -->
+    <!-- SOBRE -->
     <section id="sobre" class="mt-12">
       <h2 class="text-2xl font-extrabold accent-text mb-4">Sobre Nós</h2>
       <div class="grid md:grid-cols-3 gap-6">
         <div class="card p-6 md:col-span-2">
           <h3 class="font-bold text-lg">Nossa Missão</h3>
           <p class="muted mt-2">Facilitar a importação para empresas e empreendedores, reduzindo riscos e simplificando processos.</p>
-
           <h3 class="font-bold text-lg mt-4">Valores</h3>
-          <ul class="muted list-disc list-inside mt-2">
-            <li>Transparência</li>
-            <li>Segurança</li>
-            <li>Eficiência</li>
-            <li>Atendimento humano</li>
-          </ul>
-
+          <ul class="muted list-disc list-inside mt-2"><li>Transparência</li><li>Segurança</li><li>Eficiência</li><li>Atendimento humano</li></ul>
           <h3 class="font-bold text-lg mt-4">Como Trabalhamos</h3>
-          <ol class="muted list-decimal list-inside mt-2">
-            <li>Entendemos a necessidade do cliente</li>
-            <li>Procuramos fornecedores e comparamos ofertas</li>
-            <li>Organizamos logística e acompanhamos o envio</li>
-          </ol>
+          <ol class="muted list-decimal list-inside mt-2"><li>Entendemos a necessidade do cliente</li><li>Procuramos fornecedores e comparamos ofertas</li><li>Organizamos logística e acompanhamos o envio</li></ol>
         </div>
-
         <div class="card p-6">
           <h3 class="font-bold">Nossa Equipa</h3>
           <div class="mt-3 space-y-3">
-            <div class="flex items-center gap-3">
-              <img class="w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&auto=format&fit=crop" alt="Team" />
-              <div>
-                <div class="font-bold">Joana Pereira</div>
-                <div class="muted text-xs">Gerente de Operações</div>
-              </div>
-            </div>
-            <div class="flex items-center gap-3">
-              <img class="w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1546456073-6712f79251bb?q=80&w=100&auto=format&fit=crop" alt="Team" />
-              <div>
-                <div class="font-bold">Carlos Mendes</div>
-                <div class="muted text-xs">Especialista em Logística</div>
-              </div>
-            </div>
+            <div class="flex items-center gap-3"><img class="w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=100&auto=format&fit=crop" alt="Joana Pereira" loading="lazy" decoding="async" /><div><div class="font-bold">Joana Pereira</div><div class="muted text-xs">Gerente de Operações</div></div></div>
+            <div class="flex items-center gap-3"><img class="w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1546456073-6712f79251bb?q=80&w=100&auto=format&fit=crop" alt="Carlos Mendes" loading="lazy" decoding="async" /><div><div class="font-bold">Carlos Mendes</div><div class="muted text-xs">Especialista em Logística</div></div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CASE STUDIES (mock) -->
+    <!-- CASES -->
     <section id="cases" class="mt-12">
       <h2 class="text-2xl font-extrabold accent-text mb-4">Estudos de Caso</h2>
       <div class="grid md:grid-cols-2 gap-6">
-        <div class="card p-6">
-          <h3 class="font-bold">Revenda de Acessórios Electrónicos — Maputo</h3>
-          <p class="muted mt-2">Reduzimos custo por unidade em 18% graças a negociação de MOQ e frete coletivo. Entrega em 28 dias.</p>
-          <div class="mt-3 text-sm muted">Serviços aplicados: Sourcing, inspeção pré-envio, consolidação marítima.</div>
-        </div>
-        <div class="card p-6">
-          <h3 class="font-bold">Loja Online — Nampula</h3>
-          <p class="muted mt-2">Implementamos embalagens alternativas e reduzimos volumetria, economizando 12% no frete.</p>
-          <div class="mt-3 text-sm muted">Serviços aplicados: Otimização de embalagem, frete aéreo prioritário.</div>
-        </div>
+        <div class="card p-6"><h3 class="font-bold">Revenda de Acessórios Electrónicos — Maputo</h3><p class="muted mt-2">Reduzimos custo por unidade em 18% graças à negociação de MOQ e frete coletivo. Entrega em 28 dias.</p><div class="mt-3 text-sm muted">Serviços: Sourcing, inspeção pré-envio, consolidação marítima.</div></div>
+        <div class="card p-6"><h3 class="font-bold">Loja Online — Nampula</h3><p class="muted mt-2">Implementamos embalagens alternativas e reduzimos volumetria, economizando 12% no frete.</p><div class="mt-3 text-sm muted">Serviços: Otimização de embalagem, frete aéreo prioritário.</div></div>
       </div>
     </section>
 
-    <!-- BLOG / RECURSOS (mock) -->
+    <!-- BLOG -->
     <section id="blog" class="mt-12">
       <h2 class="text-2xl font-extrabold accent-text mb-4">Recursos & Blog</h2>
       <div class="grid md:grid-cols-3 gap-4">
-        <article class="card p-4">
-          <h3 class="font-bold">Como escolher o melhor Incoterm</h3>
-          <p class="muted text-sm mt-2">Guia rápido para entender responsabilidades e custos entre comprador e vendedor.</p>
-        </article>
-        <article class="card p-4">
-          <h3 class="font-bold">Reduzir custos no frete marítimo</h3>
-          <p class="muted text-sm mt-2">Dicas práticas para consolidar cargas, negociar espaço e reduzir volumetria.</p>
-        </article>
-        <article class="card p-4">
-          <h3 class="font-bold">Checklist antes de importar</h3>
-          <p class="muted text-sm mt-2">Lista de verificação para evitar problemas de compliance e atrasos aduaneiros.</p>
-        </article>
+        <article class="card p-4"><h3 class="font-bold">Como escolher o melhor Incoterm</h3><p class="muted text-sm mt-2">Guia rápido para entender responsabilidades e custos entre comprador e vendedor.</p></article>
+        <article class="card p-4"><h3 class="font-bold">Reduzir custos no frete marítimo</h3><p class="muted text-sm mt-2">Dicas práticas para consolidar cargas, negociar espaço e reduzir volumetria.</p></article>
+        <article class="card p-4"><h3 class="font-bold">Checklist antes de importar</h3><p class="muted text-sm mt-2">Evite problemas de compliance e atrasos aduaneiros.</p></article>
       </div>
     </section>
 
-    <!-- FAQ EXPANDIDO -->
+    <!-- FAQ -->
     <section id="faq" class="mt-12">
       <h2 class="text-2xl font-extrabold accent-text mb-4">Perguntas Frequentes</h2>
       <div class="space-y-3">
-        <details class="card p-4"><summary class="font-semibold accent-text cursor-pointer">Posso pedir cotação sem imagem?</summary><div class="muted mt-2">Sim — escreve o nome do produto ou cola o link. A imagem ajuda, mas não é obrigatória.</div></details>
+        <details class="card p-4"><summary class="font-semibold accent-text cursor-pointer">Posso pedir cotação sem imagem?</summary><div class="muted mt-2">Sim — escreva o nome do produto ou cole o link. A imagem ajuda, mas não é obrigatória.</div></details>
         <details class="card p-4"><summary class="font-semibold accent-text cursor-pointer">Como pagar?</summary><div class="muted mt-2">Aceitamos M-Pesa, Kuenha e transferência. Detalhes enviados na cotação.</div></details>
         <details class="card p-4"><summary class="font-semibold accent-text cursor-pointer">Quanto tempo demora a entrega?</summary><div class="muted mt-2">Depende do fornecedor e da modalidade de envio; informamos prazos na cotação final.</div></details>
-        <details class="card p-4"><summary class="font-semibold accent-text cursor-pointer">Fazem inspeção pré-embarque?</summary><div class="muted mt-2">Sim — oferecemos inspeções pagas e há também pacotes incluídos em planos profissionais.</div></details>
+        <details class="card p-4"><summary class="font-semibold accent-text cursor-pointer">Fazem inspeção pré-embarque?</summary><div class="muted mt-2">Sim — oferecemos inspeções pagas e há pacotes incluídos em planos profissionais.</div></details>
       </div>
     </section>
 
-    <!-- CALL TO ACTION FINAL -->
+    <!-- CTA FINAL -->
     <section class="mt-12 text-center">
       <div class="card p-8">
         <h2 class="text-2xl font-extrabold">Pronto para importar com menos risco?</h2>
         <p class="muted mt-2">Solicite a sua cotação agora mesmo e receba uma resposta em poucas horas.</p>
-        <div class="mt-4">
-          <a href="#pedido" class="px-6 py-3 rounded-2xl" style="background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#00121a; font-weight:700;">Solicitar Cotação</a>
-        </div>
+        <div class="mt-4"><a href="#pedido" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-accent to-accent2 text-[#00121a] font-bold">Solicitar Cotação</a></div>
       </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="mt-12 pb-20">
+    <footer class="mt-12 pb-20" role="contentinfo">
       <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-6">
-        <div>
-          <div class="text-lg font-bold accent-text">Cotação Expressa</div>
-          <div class="muted mt-2">Intermediação confiável para importação.</div>
-        </div>
-        <div>
-          <div class="font-semibold muted">Contato</div>
-          <div class="mt-2 text-sm">WhatsApp: <a id="footerWa" href="#" class="text-accent font-medium">+258 83 386 9285</a></div>
-          <div class="mt-1 text-sm muted">E-mail: <span id="footerEmail">novadigitalj@gmail.com</span></div>
-        </div>
-        <div>
-          <div class="font-semibold muted">Links</div>
-          <ul class="mt-2 text-sm muted space-y-1">
-            <li><a href="#pedido" class="underline">Pedir cotação</a></li>
-            <li><a href="#testemunhos" class="underline">Testemunhos</a></li>
-            <li><a href="#faq" class="underline">FAQ</a></li>
-          </ul>
-        </div>
+        <div><div class="text-lg font-bold accent-text">Cotação Express</div><div class="muted mt-2">Intermediação confiável para importação.</div></div>
+        <div><div class="font-semibold muted">Contacto</div><div class="mt-2 text-sm">WhatsApp: <a id="footerWa" href="#" class="text-accent font-medium" target="_blank" rel="noopener">+258 83 386 9285</a></div><div class="mt-1 text-sm muted">E-mail: <span id="footerEmail">novadigitalj@gmail.com</span></div></div>
+        <div><div class="font-semibold muted">Links</div><ul class="mt-2 text-sm muted space-y-1"><li><a href="#pedido" class="underline">Pedir cotação</a></li><li><a href="#cases" class="underline">Estudos de caso</a></li><li><a href="#faq" class="underline">FAQ</a></li></ul></div>
       </div>
-
-      <div class="text-center text-xs muted mt-8">© 2025 Cotação Express — Todos os direitos reservados.</div>
+      <div class="text-center text-xs muted mt-8">© <span id="year"></span> Cotação Express — Todos os direitos reservados.</div>
     </footer>
-
   </main>
 
-  <!-- FLOATING WHATSAPP -->
-  <a id="waFloat" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"><i class="fa-brands fa-whatsapp text-2xl" style="color:#00121a;"></i></a>
+  <!-- WhatsApp Floating -->
+  <a id="waFloat" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp"><i class="fa-brands fa-whatsapp text-2xl" style="color:#00121a"></i></a>
 
-  <!-- toast wrapper -->
-  <div id="toastWrap" style="position:fixed; right:18px; bottom:18px; z-index:90;"></div>
+  <!-- toast wrapper / modal root -->
+  <div id="toastWrap" class="fixed right-4 bottom-20 z-[90] space-y-2 w-[90vw] max-w-sm"></div>
   <div id="modalRoot" aria-live="polite"></div>
 
-  <!-- SCRIPTS (expandidos e comentados) -->
+  <!-- Scripts -->
   <script>
-    /***************************************************************************
-     * CONFIGURAÇÕES INICIAIS
-     **************************************************************************/
-    const BUSINESS_WHATSAPP = '258833869285'; // número do negócio sem +
+  /********************** CONFIG **********************/
+  const BUSINESS_WHATSAPP = '258833869285'; // sem +
 
-    /***************************************************************************
-     * UTILITÁRIOS (TOAST, MODAL)
-     **************************************************************************/
-    const toastWrap = document.getElementById('toastWrap');
-    function showToast(msg, ok = true, timeout = 4200){
+  /********************** TOAST & MODAL **********************/
+  const toastWrap = document.getElementById('toastWrap');
+  function showToast(msg, ok = true, timeout = 4200){
+    const el = document.createElement('div');
+    el.className = 'toast card px-4 py-3 text-sm';
+    el.style.borderColor = ok ? 'rgba(0,240,255,0.18)' : 'rgba(255,80,80,0.24)';
+    el.innerText = msg;
+    toastWrap.appendChild(el);
+    setTimeout(()=> el.remove(), timeout);
+  }
+
+  const modalRoot = document.getElementById('modalRoot');
+  function showModal(title, body, timeout = 6000){
+    const wrapper = document.createElement('div');
+    wrapper.className = 'mmask show grid place-items-center';
+    wrapper.innerHTML = `
+      <div class="card p-6 max-w-xl mx-4 msheet">
+        <div class="text-2xl font-extrabold accent-text">${title}</div>
+        <div class="muted mt-2">${body}</div>
+        <div class="mt-4 flex justify-end">
+          <button id="closeModalBtn" class="px-4 py-2 rounded bg-white/5">Fechar</button>
+        </div>
+      </div>`;
+    modalRoot.appendChild(wrapper);
+    wrapper.querySelector('#closeModalBtn').addEventListener('click', ()=> wrapper.remove());
+    setTimeout(()=> { if (wrapper.parentNode) wrapper.remove(); }, timeout);
+  }
+
+  /********************** HERO CANVAS **********************/
+  (function initHeroCanvas(){
+    const canvas = document.getElementById('heroCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const DPR = window.devicePixelRatio || 1;
+    function resize(){ canvas.width = canvas.clientWidth * DPR; canvas.height = canvas.clientHeight * DPR; }
+    let particles = [];
+    const R = ()=> Math.random();
+    function createParticles(){
+      particles = [];
+      const count = 24;
+      for(let i=0;i<count;i++){
+        particles.push({
+          x: R()*canvas.width, y: R()*canvas.height, r: 6 + R()*34,
+          vx: -0.3 + R()*0.6, vy: -0.15 + R()*0.3, a: 0.08 + R()*0.12
+        });
+      }
+    }
+    function draw(){
+      const w = canvas.width, h = canvas.height;
+      ctx.clearRect(0,0,w,h);
+      for(const p of particles){
+        p.x += p.vx * DPR; p.y += p.vy * DPR;
+        if(p.x < -100) p.x = w + 100; if(p.x > w + 100) p.x = -100;
+        if(p.y < -100) p.y = h + 100; if(p.y > h + 100) p.y = -100;
+        const grad = ctx.createRadialGradient(p.x, p.y, p.r*0.1, p.x, p.y, p.r);
+        grad.addColorStop(0, `rgba(0,240,255,${p.a*1.1})`);
+        grad.addColorStop(1, 'rgba(0,20,30,0)');
+        ctx.beginPath(); ctx.fillStyle = grad; ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+    function start(){ resize(); createParticles(); draw(); }
+    window.addEventListener('resize', ()=>{ resize(); createParticles(); });
+    start();
+  })();
+
+  /********************** DROPZONE **********************/
+  const dropzone = document.getElementById('dropzone');
+  const fileInput = document.getElementById('arquivo');
+  const dzContent = document.getElementById('dzContent');
+  const previewGrid = document.getElementById('previewGrid');
+  const pickFileBtn = document.getElementById('pickFileBtn');
+  let filesList = [];
+
+  function resetDropzone(){ filesList = []; fileInput.value = ''; previewGrid.innerHTML = ''; previewGrid.classList.add('hidden'); dzContent.classList.remove('hidden'); }
+  pickFileBtn.addEventListener('click', ()=> fileInput.click());
+  dropzone.addEventListener('click', ()=> fileInput.click());
+  dropzone.addEventListener('dragover', (e)=> { e.preventDefault(); dropzone.classList.add('ring-2'); });
+  dropzone.addEventListener('dragleave', ()=> dropzone.classList.remove('ring-2'));
+  dropzone.addEventListener('drop', (e)=>{ e.preventDefault(); dropzone.classList.remove('ring-2'); if(e.dataTransfer?.files?.length){ handleMultipleFiles(e.dataTransfer.files); } });
+  fileInput.addEventListener('change', (e)=> { if(e.target.files?.length) handleMultipleFiles(e.target.files); });
+
+  function handleMultipleFiles(list){ Array.from(list).slice(0,6).forEach(file=> processFile(file)); }
+
+  function processFile(file){
+    if(!file) return;
+    if(file.size > 20 * 1024 * 1024){ showToast('Arquivo muito grande. Tente outra versão.', false); return; }
+    const reader = new FileReader();
+    reader.onload = (ev)=>{
+      if(file.type.startsWith('image/')){
+        const img = new Image();
+        img.src = ev.target.result;
+        img.onload = ()=>{
+          const MAX_W = 1400; let w=img.width, h=img.height; if(w>MAX_W){ h = Math.round(h * (MAX_W/w)); w=MAX_W; }
+          const canvas = document.createElement('canvas'); canvas.width = w; canvas.height = h;
+          const ctx = canvas.getContext('2d'); ctx.fillStyle='#fff'; ctx.fillRect(0,0,w,h); ctx.drawImage(img,0,0,w,h);
+          canvas.toBlob((blob)=>{ if(!blob) return; addFile(new File([blob], file.name.replace(/\.[^.]+$/, '.webp'), {type:'image/webp'}), URL.createObjectURL(blob), file.name); }, 'image/webp', 0.78);
+        };
+      } else if(file.type === 'application/pdf'){
+        addFile(file, '', file.name);
+      } else { showToast('Formato não suportado.', false); }
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function addFile(blob, previewUrl, name){ filesList.push({ blob, previewUrl, name }); renderPreviewGrid(); }
+  function removeFile(idx){ filesList.splice(idx,1); renderPreviewGrid(); }
+  function renderPreviewGrid(){
+    previewGrid.innerHTML='';
+    if(filesList.length===0){ previewGrid.classList.add('hidden'); dzContent.classList.remove('hidden'); return; }
+    previewGrid.classList.remove('hidden'); dzContent.classList.add('hidden');
+    filesList.forEach((f,i)=>{
       const el = document.createElement('div');
-      el.className = 'toast card';
-      el.style.borderColor = ok ? 'rgba(0,240,255,0.06)' : 'rgba(255,80,80,0.12)';
-      el.textContent = msg;
-      toastWrap.appendChild(el);
-      setTimeout(()=> el.remove(), timeout);
-    }
-
-    const modalRoot = document.getElementById('modalRoot');
-    function showModal(title, body, timeout = 6000){
-      const wrapper = document.createElement('div');
-      wrapper.className = 'fixed inset-0 z-70 grid place-items-center bg-black/60';
-      wrapper.innerHTML = `
-        <div class="card p-6 max-w-xl mx-4">
-          <div class="text-2xl font-extrabold accent-text">${title}</div>
-          <div class="muted mt-2">${body}</div>
-          <div class="mt-4 flex justify-end">
-            <button id="closeModalBtn" class="px-4 py-2 rounded bg-white/5">Fechar</button>
-          </div>
-        </div>
-      `;
-      modalRoot.appendChild(wrapper);
-      wrapper.querySelector('#closeModalBtn').addEventListener('click', ()=> wrapper.remove());
-      setTimeout(()=> { if (wrapper.parentNode) wrapper.remove(); }, timeout);
-    }
-
-    /***************************************************************************
-     * HERO CANVAS — animação generativa simples (bolhas/partículas)
-     **************************************************************************/
-    (function initHeroCanvas(){
-      const canvas = document.getElementById('heroCanvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      const DPR = window.devicePixelRatio || 1;
-      function resize(){
-        canvas.width = canvas.clientWidth * DPR;
-        canvas.height = canvas.clientHeight * DPR;
-      }
-      let particles = [];
-      function random(min,max){ return Math.random()*(max-min)+min; }
-      function createParticles(){
-        particles = [];
-        for(let i=0;i<24;i++){
-          particles.push({ x: random(0, canvas.width), y: random(0, canvas.height), r: random(6,40), vx: random(-0.3,0.3), vy: random(-0.15,0.15), alpha: random(0.08,0.18) });
-        }
-      }
-      function draw(){
-        const w = canvas.width, h = canvas.height;
-        ctx.clearRect(0,0,w,h);
-        for(const p of particles){
-          p.x += p.vx * DPR; p.y += p.vy * DPR;
-          if(p.x < -100) p.x = w + 100; if(p.x > w + 100) p.x = -100;
-          if(p.y < -100) p.y = h + 100; if(p.y > h + 100) p.y = -100;
-          const grad = ctx.createRadialGradient(p.x, p.y, p.r*0.1, p.x, p.y, p.r);
-          grad.addColorStop(0, 'rgba(0,240,255,'+ (p.alpha*1.2) +')');
-          grad.addColorStop(1, 'rgba(0,20,30,0)');
-          ctx.beginPath(); ctx.fillStyle = grad; ctx.arc(p.x, p.y, p.r, 0, Math.PI*2); ctx.fill();
-        }
-        requestAnimationFrame(draw);
-      }
-      function start(){ resize(); createParticles(); draw(); }
-      window.addEventListener('resize', ()=>{ resize(); createParticles(); });
-      start();
-    })();
-
-    /***************************************************************************
-     * DROPZONE + UPLOADS (compressão client-side simples)
-     **************************************************************************/
-    const dropzone = document.getElementById('dropzone');
-    const fileInput = document.getElementById('arquivo');
-    const dzContent = document.getElementById('dzContent');
-    const previewGrid = document.getElementById('previewGrid');
-    const pickFileBtn = document.getElementById('pickFileBtn');
-
-    let filesList = [];
-    function resetDropzone(){ filesList = []; fileInput.value = ''; previewGrid.innerHTML = ''; previewGrid.classList.add('hidden'); dzContent.classList.remove('hidden'); }
-
-    pickFileBtn.addEventListener('click', ()=> fileInput.click());
-    dropzone.addEventListener('click', ()=> fileInput.click());
-
-    dropzone.addEventListener('dragover', (e)=> { e.preventDefault(); dropzone.classList.add('ring-2'); });
-    dropzone.addEventListener('dragleave', ()=> dropzone.classList.remove('ring-2'));
-
-    dropzone.addEventListener('drop', (e)=>{ e.preventDefault(); dropzone.classList.remove('ring-2'); if(e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length){ handleMultipleFiles(e.dataTransfer.files); } });
-
-    fileInput.addEventListener('change', (e)=> { if(e.target.files && e.target.files.length) handleMultipleFiles(e.target.files); });
-
-    function handleMultipleFiles(list){
-      const arr = Array.from(list).slice(0,6); // limita a 6 anexos para o formulário
-      arr.forEach(file=> processFile(file));
-    }
-
-    function processFile(file){
-      if(!file) return;
-      if(file.size > 20 * 1024 * 1024){ showToast('Arquivo muito grande. Tenta outra versão.', false); return; }
-
-      const reader = new FileReader();
-      reader.onload = (ev)=>{
-        if(file.type.startsWith('image/')){
-          const img = new Image(); img.src = ev.target.result;
-          img.onload = ()=>{
-            const MAX_W = 1400; let w=img.width, h=img.height; if(w>MAX_W){ h = Math.round(h * (MAX_W/w)); w=MAX_W; }
-            const canvas = document.createElement('canvas'); canvas.width = w; canvas.height = h; const ctx = canvas.getContext('2d'); ctx.fillStyle='#fff'; ctx.fillRect(0,0,w,h); ctx.drawImage(img,0,0,w,h);
-            canvas.toBlob((blob)=>{ if(!blob) return; addFile(blob, URL.createObjectURL(blob), file.name); }, 'image/webp', 0.78);
-          };
-        } else if(file.type === 'application/pdf'){
-          addFile(file, '', file.name);
-        } else {
-          showToast('Formato não suportado.', false);
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-
-    function addFile(blob, previewUrl, name){
-      filesList.push({ blob, previewUrl, name });
-      renderPreviewGrid();
-    }
-
-    function removeFile(idx){ filesList.splice(idx,1); renderPreviewGrid(); }
-
-    function renderPreviewGrid(){ previewGrid.innerHTML=''; if(filesList.length===0){ previewGrid.classList.add('hidden'); dzContent.classList.remove('hidden'); return; } previewGrid.classList.remove('hidden'); dzContent.classList.add('hidden'); filesList.forEach((f,i)=>{
-      const el = document.createElement('div'); el.className='p-2 bg-black/40 rounded-lg'; el.innerHTML = `
-        ${f.previewUrl? `<img src="${f.previewUrl}" alt="preview" class="w-full h-28 object-cover rounded">` : `<div class="text-sm muted p-6 text-center">PDF: ${f.name}</div>`}
+      el.className='p-2 bg-black/40 rounded-lg';
+      el.innerHTML = `
+        ${f.previewUrl? `<img src="${f.previewUrl}" alt="Pré-visualização" class="w-full h-28 object-cover rounded" loading="lazy" decoding="async">` : `<div class="text-sm muted p-6 text-center">PDF: ${f.name}</div>`}
         <div class="mt-2 flex justify-between items-center">
-          <div class="text-xs muted truncate">${f.name}</div>
-          <div class="flex gap-2"><button class="px-2 py-1 text-xs bg-white/5 rounded" onclick="removeFile(${i})">Remover</button></div>
-        </div>
-      `; previewGrid.appendChild(el);
-    }); }
-
-    /***************************************************************************
-     * LINKS WHATSAPP DINÂMICOS E ENVIO (fallback para WhatsApp se não configurar email)
-     **************************************************************************/
-    const waContact = document.getElementById('waContact');
-    const waFloat = document.getElementById('waFloat');
-    const footerWa = document.getElementById('footerWa');
-
-    function updateWaLinks(){ const full = BUSINESS_WHATSAPP; const pre = encodeURIComponent('Olá! Quero pedir uma cotação.'); waFloat.href = `https://wa.me/${full}?text=${pre}`; waContact.href = `https://wa.me/${BUSINESS_WHATSAPP}`; footerWa.href = `https://wa.me/${BUSINESS_WHATSAPP}`; }
-    updateWaLinks();
-
-    function openWhatsAppLogistica(e){ e.preventDefault(); const msg = encodeURIComponent('Olá! Quero falar com um especialista em logística sobre transporte aéreo/marítimo. Enviarei detalhes da minha encomenda.'); window.open(`https://wa.me/${BUSINESS_WHATSAPP}?text=${msg}`, '_blank'); }
-
-    /***************************************************************************
-     * VALIDAÇÃO E ENVIO DO FORMULÁRIO — inclui anexos convertidos para base64
-     **************************************************************************/
-    const mainForm = document.getElementById('mainForm');
-    const submitBtn = document.getElementById('submitBtn');
-
-    function setLoading(on){ if(on){ submitBtn.disabled = true; submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> A enviar…'; } else { submitBtn.disabled = false; submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Enviar pedido'; } }
-
-    function blobToBase64(blob){ return new Promise((resolve,reject)=>{ const fr = new FileReader(); fr.onload = ()=> resolve(fr.result); fr.onerror = ()=> reject(new Error('Erro ao ler blob')); fr.readAsDataURL(blob); }); }
-
-    mainForm.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const nome = document.getElementById('nome').value.trim();
-      const rawPhone = document.getElementById('telefone').value.replace(/\D/g,'');
-      const produto = document.getElementById('produto').value.trim();
-      const quantidade = document.getElementById('quantidade').value.trim() || '1';
-      const orcamento = document.getElementById('orcamento').value.trim();
-      const obs = document.getElementById('obs').value.trim();
-      const consent = document.getElementById('consent').checked;
-
-      if(!nome){ showToast('Por favor escreve o seu nome.', false); return; }
-      if(!/^([78]\d{8})$/.test(rawPhone)){ showToast('Número inválido (verifica os dígitos).', false); return; }
-      if(!produto){ showToast('Indica o nome ou link do produto.', false); return; }
-      if(!consent){ showToast('Marca concordância de contato por WhatsApp.', false); return; }
-
-      setLoading(true);
-
-      // converte anexos para base64 (cuidado: pode ser pesado — para demo apenas primeiros 3)
-      let anexos_base64 = [];
-      for(let i=0;i<Math.min(filesList.length,3);i++){
-        try{ const b64 = await blobToBase64(filesList[i].blob); anexos_base64.push({ name: filesList[i].name, data: b64 }); } catch(err){ console.warn('Erro ao codificar anexo', err); }
-      }
-
-      const payload = {
-        nome_cliente: nome,
-        telefone_cliente: `+258${rawPhone}`,
-        produto,
-        quantidade,
-        orcamento: orcamento || '-',
-        notas: obs || '-',
-        anexos: anexos_base64
-      };
-
-      // fallback: abrir WhatsApp com texto pré-preenchido (abre nova aba) — preferível para integração simples
-      try{
-        const text = encodeURIComponent(`Pedido de Cotacao\nNome: ${nome}\nTelefone: +258${rawPhone}\nProduto: ${produto}\nQuantidade: ${quantidade}\nOrcamento: ${orcamento || '-'}\nObservacoes: ${obs || '-'}`);
-        window.open(`https://wa.me/${BUSINESS_WHATSAPP}?text=${text}`, '_blank');
-        showModal('Abrimos o WhatsApp', 'Envie a imagem no chat se necessário. Responderemos em breve.');
-        showToast('Abrimos o WhatsApp para completar o envio (fallback).', true);
-        mainForm.reset(); resetDropzone();
-      } catch(err){ console.error('Erro no envio:', err); showToast('Erro ao abrir WhatsApp. Tenta novamente.', false); }
-      finally{ setLoading(false); }
+          <div class="text-xs muted truncate" title="${f.name}">${f.name}</div>
+          <div class="flex gap-2"><button class="px-2 py-1 text-xs bg-white/5 rounded" data-remove="${i}">Remover</button></div>
+        </div>`;
+      el.querySelector('[data-remove]')?.addEventListener('click', ()=> removeFile(i));
+      previewGrid.appendChild(el);
     });
+  }
 
-    /***************************************************************************
-     * MENU MÓVEL
-     **************************************************************************/
-    document.getElementById('menuBtn')?.addEventListener('click', ()=>{
-      const menu = document.createElement('div');
-      menu.className = 'fixed inset-0 z-70 grid place-items-center bg-black/60';
-      menu.innerHTML = `
-        <div class="card p-6 w-full max-w-sm mx-4">
-          <nav class="flex flex-col gap-4">
-            <a href="#pedido" class="font-bold">Pedir cotação</a>
-            <a href="#vantagens">Vantagens</a>
-            <a href="#logistica">Logística</a>
-            <a href="#faq">FAQ</a>
-            <button id="closeMenu" class="mt-3 px-4 py-2 rounded bg-white/5">Fechar</button>
-          </nav>
-        </div>
-      `;
-      document.body.appendChild(menu);
-      menu.querySelector('#closeMenu').addEventListener('click', ()=> menu.remove());
-    });
+  /********************** WHATSAPP LINKS **********************/
+  const waContact = document.getElementById('waContact');
+  const waFloat = document.getElementById('waFloat');
+  const footerWa = document.getElementById('footerWa');
+  function updateWaLinks(){
+    const pre = encodeURIComponent('Olá! Quero pedir uma cotação.');
+    const href = `https://wa.me/${BUSINESS_WHATSAPP}?text=${pre}`;
+    waFloat.href = href; waContact.href = href; footerWa.href = href;
+  }
+  updateWaLinks();
 
-    document.getElementById('faqQuick')?.addEventListener('click', ()=> location.href = '#faq');
+  document.getElementById('logisticaCTA')?.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const msg = encodeURIComponent('Olá! Quero falar com um especialista em logística sobre transporte aéreo/marítimo.');
+    window.open(`https://wa.me/${BUSINESS_WHATSAPP}?text=${msg}`, '_blank', 'noopener');
+  });
 
-    // debug toggle (Ctrl+D)
-    document.addEventListener('keydown', (e)=>{ if(e.key === 'd' && e.ctrlKey){ document.body.classList.toggle('debug'); showToast('Modo de depuração alternado'); } });
+  /********************** FORM SUBMIT **********************/
+  const mainForm = document.getElementById('mainForm');
+  const submitBtn = document.getElementById('submitBtn');
+  function setLoading(on){ submitBtn.disabled = !!on; submitBtn.innerHTML = on ? '<i class="fa-solid fa-circle-notch fa-spin"></i> A enviar…' : '<i class="fa-solid fa-paper-plane"></i> Enviar pedido'; }
+  function blobToBase64(blob){ return new Promise((resolve,reject)=>{ const fr = new FileReader(); fr.onload = ()=> resolve(fr.result); fr.onerror = ()=> reject(new Error('Erro ao ler blob')); fr.readAsDataURL(blob); }); }
 
-    // garante link flutuante WA
-    waFloat.href = `https://wa.me/${BUSINESS_WHATSAPP}`;
-    waFloat.target = '_blank'; waFloat.rel = 'noopener noreferrer';
+  mainForm.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const nome = document.getElementById('nome').value.trim();
+    const rawPhone = document.getElementById('telefone').value.replace(/\D/g,'');
+    const produto = document.getElementById('produto').value.trim();
+    const quantidade = document.getElementById('quantidade').value.trim() || '1';
+    const orcamento = document.getElementById('orcamento').value.trim();
+    const obs = document.getElementById('obs').value.trim();
+    const consent = document.getElementById('consent').checked;
 
-    console.log('Cotação Express — versão expandida pronta. BUSINESS_WHATSAPP:', BUSINESS_WHATSAPP);
+    if(!nome){ showToast('Por favor, escreva o seu nome.', false); return; }
+    if(!/^([78]\d{8})$/.test(rawPhone)){ showToast('Número inválido (verifique os dígitos).', false); return; }
+    if(!produto){ showToast('Indique o nome ou link do produto.', false); return; }
+    if(!consent){ showToast('É necessário autorizar o contacto por WhatsApp.', false); return; }
+
+    setLoading(true);
+
+    // Converte até 3 anexos para base64 (demonstrativo)
+    let anexos_base64 = [];
+    for(let i=0;i<Math.min(filesList.length,3);i++){
+      try{ const b64 = await blobToBase64(filesList[i].blob); anexos_base64.push({ name: filesList[i].name, data: b64 }); }
+      catch(err){ console.warn('Erro ao codificar anexo', err); }
+    }
+
+    const texto = encodeURIComponent(
+`Pedido de Cotação\nNome: ${nome}\nTelefone: +258${rawPhone}\nProduto: ${produto}\nQuantidade: ${quantidade}\nOrçamento: ${orcamento || '-'}\nObservações: ${obs || '-'}`);
+
+    // Fallback: abrir WhatsApp com mensagem pré-preenchida
+    try{
+      window.open(`https://wa.me/${BUSINESS_WHATSAPP}?text=${texto}`, '_blank', 'noopener');
+      showModal('Abrimos o WhatsApp', 'Envie a imagem no chat se necessário. Responderemos em breve.');
+      showToast('Abrimos o WhatsApp para completar o envio (fallback).', true);
+      mainForm.reset(); resetDropzone();
+    } catch(err){
+      console.error('Erro no envio:', err);
+      showToast('Erro ao abrir WhatsApp. Tente novamente.', false);
+    } finally { setLoading(false); }
+  });
+
+  /********************** MENU MOBILE **********************/
+  const menuBtn = document.getElementById('menuBtn');
+  menuBtn?.addEventListener('click', ()=>{
+    const mask = document.createElement('div');
+    mask.className = 'mmask show';
+    mask.innerHTML = `
+      <div class="card p-6 w-full max-w-sm mx-auto mt-12 msheet">
+        <nav class="flex flex-col gap-4">
+          <a href="#pedido" class="font-bold">Pedir cotação</a>
+          <a href="#vantagens">Vantagens</a>
+          <a href="#logistica">Logística</a>
+          <a href="#faq">FAQ</a>
+          <button id="closeMenu" class="mt-3 px-4 py-2 rounded bg-white/5">Fechar</button>
+        </nav>
+      </div>`;
+    document.body.appendChild(mask);
+    mask.addEventListener('click', (e)=>{ if(e.target===mask) mask.remove(); });
+    mask.querySelector('#closeMenu')?.addEventListener('click', ()=> mask.remove());
+  });
+
+  document.getElementById('faqQuick')?.addEventListener('click', ()=> location.hash = '#faq');
+  document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
+  <noscript>
+    <div style="padding:1rem; background:#06202b; color:#cde6ee; text-align:center;">Este site funciona melhor com JavaScript ativado. Ative para enviar o formulário e ver animações.</div>
+  </noscript>
 </body>
 </html>
