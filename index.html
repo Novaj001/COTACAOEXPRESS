@@ -1,130 +1,188 @@
 <!DOCTYPE html>
-<html lang="pt-MZ">
+<html lang="pt-MZ" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cotação Express — Upload Futurista</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cotação Express — iPhones, Samsungs & Electrónicos</title>
+<meta name="description" content="Envie a foto/print, seu nome e WhatsApp. Receba cotação rápida de iPhones, Samsungs e eletrónicos com preços baixos e qualidade alta.">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* --- Reset e base --- */
-*{box-sizing:border-box;margin:0;padding:0;font-family:Poppins,sans-serif;}
-body{height:100vh; display:flex; justify-content:center; align-items:center; background:#0a0f1c; color:#eaf6ff; overflow-x:hidden;}
-.container{width:400px; max-width:90%; background:rgba(10,15,28,0.8); padding:30px; border-radius:20px; box-shadow: 0 0 40px rgba(0,229,255,0.4); backdrop-filter: blur(12px);}
-h2{text-align:center; color:#00e5ff; margin-bottom:20px; font-size:26px;}
-input, button{width:100%; padding:12px 16px; margin:10px 0; border-radius:12px; border:none; outline:none; font-size:14px;}
-input{background:rgba(255,255,255,0.05); color:#eaf6ff;}
-input::placeholder{color:#7a8ca5;}
-button{background:linear-gradient(135deg,#00e5ff,#7c3aed); color:#070d19; font-weight:700; cursor:pointer; transition:0.3s;}
-button:hover{transform:translateY(-2px); box-shadow:0 10px 20px rgba(0,229,255,0.4);}
-.dropzone{position:relative; border:2px dashed rgba(0,229,255,0.4); border-radius:16px; padding:20px; text-align:center; cursor:pointer; transition:0.3s; margin-top:10px;}
-.dropzone:hover{border-color:#7c3aed; background:rgba(124,58,237,0.05);}
-.dropzone input{position:absolute; inset:0; width:100%; height:100%; opacity:0; cursor:pointer;}
-.dropzone-text{color:#7a8ca5; font-size:14px;}
-.previews{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;}
-.thumb{position:relative; width:80px; height:80px; border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,0.1);}
-.thumb img{width:100%; height:100%; object-fit:cover;}
-.thumb .x{position:absolute; top:4px; right:4px; background:rgba(0,0,0,0.5); width:20px; height:20px; border-radius:6px; font-size:14px; text-align:center; line-height:20px; cursor:pointer; color:#fff;}
-#status{text-align:center; margin-top:12px; font-weight:600;}
+:root{
+  --bg1:#070d19; --bg2:#0b1224; --bg3:#0e1530; --ink:#eaf6ff; --muted:#9db9d2;
+  --pri:#00e5ff; --accent:#7c3aed; --ok:#22c55e; --warn:#fbbf24; --err:#ef4444;
+  --glass: rgba(255,255,255,0.08);
+  --shadow: 0 30px 80px rgba(0,0,0,.55);
+}
+*{box-sizing:border-box;}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);}
+body{
+  background: radial-gradient(1200px 600px at 10% -10%, rgba(124,58,237,.22), transparent 60%),
+              radial-gradient(1200px 600px at 120% 10%, rgba(0,212,255,.18), transparent 60%),
+              linear-gradient(180deg, var(--bg1), var(--bg2) 40%, var(--bg3));
+  background-attachment: fixed;
+}
+a{color:var(--pri); text-decoration:none;}
+.container{max-width:1100px;margin:0 auto;padding:0 18px;}
+.glass{
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.10); backdrop-filter: blur(10px); border-radius:18px;
+  box-shadow: var(--shadow); padding:24px;
+}
+header{position:sticky;top:0; z-index:50; background:rgba(6,10,22,.55); backdrop-filter: blur(10px); border-bottom:1px solid rgba(255,255,255,.08);}
+.nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
+.brand{display:flex; gap:12px; align-items:center;}
+.logo{width:44px;height:44px;border-radius:14px; display:grid; place-items:center; background: radial-gradient(circle at 30% 30%, #00e5ff, transparent 45%), radial-gradient(circle at 70% 60%, #7c3aed, transparent 45%), linear-gradient(135deg,#0b1224, #1b2a50); box-shadow: inset 0 0 20px rgba(0,229,255,.28),0 10px 30px rgba(0,0,0,.5);}
+.brand h1{font-family:Poppins,Inter,sans-serif;margin:0;font-size:18px;letter-spacing:.2px;}
+.nav .cta{padding:10px 14px;border-radius:12px;background:linear-gradient(135deg,var(--pri),var(--accent));color:#051320;font-weight:800;}
+
+/* Hero */
+.hero{display:grid; grid-template-columns:1.1fr .9fr; gap:26px; padding:26px 0 10px;}
+.hero h2{font-family:Poppins,Inter,sans-serif;font-size: clamp(26px,3.4vw,42px);line-height:1.1;margin:10px 0;}
+.hero .lead{color:var(--muted); font-size:15px;margin-bottom:16px;}
+
+/* Form */
+.form-wrap{margin-top:18px; display:grid; grid-template-columns:1fr .9fr; gap:26px;}
+label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px;}
+.input{width:100%; background:rgba(0,0,0,.36); color:var(--ink); padding:12px 12px 12px 44px; border-radius:12px; border:1px solid rgba(255,255,255,.12); outline:none;}
+.input:focus{border-color:var(--pri); box-shadow:0 0 0 4px rgba(0,229,255,.08);}
+.phone{display:grid; grid-template-columns:72px 1fr; gap:8px;}
+.cc{display:grid; place-items:center; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.36); color:var(--muted);}
+
+.dropzone{border:2px dashed rgba(0,229,255,.28); border-radius:16px; padding:16px; text-align:center; cursor:pointer; position:relative; overflow:hidden; background:rgba(0,0,0,.32);}
+.dropzone:hover{border-color:rgba(124,58,237,.4);}
+.dropzone input{position:absolute; inset:0; opacity:0; cursor:pointer;}
+.dz-instr{font-size:14px; color:var(--muted);}
+.previews{display:grid; grid-template-columns: repeat(auto-fill,minmax(90px,1fr)); gap:10px; margin-top:12px;}
+.thumb{position:relative; border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,.08);}
+.thumb img{display:block; width:100%; height:90px; object-fit:cover;}
+.thumb .x{position:absolute; right:6px; top:6px; background:rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.2); width:24px; height:24px; border-radius:6px; font-size:14px; cursor:pointer;}
+
+.actions{display:flex; gap:10px; align-items:center; margin-top:14px;}
+.btn{padding:12px 16px; border-radius:14px; font-weight:800; border:none; cursor:pointer;}
+.btn-primary{background:linear-gradient(135deg,var(--pri),var(--accent)); color:#04121f;}
+.btn-ghost{background:rgba(255,255,255,.06); color:var(--ink); border:1px solid rgba(255,255,255,.10);}
+.msg{margin-top:12px; font-weight:600;}
+.msg.ok{color:var(--ok);}
+.msg.err{color:var(--err);}
+
+/* Responsivo */
+@media (max-width:980px){.hero{grid-template-columns:1fr}.form-wrap{grid-template-columns:1fr;}}
+@media (max-width:620px){.nav .cta{display:none;}}
 </style>
 </head>
 <body>
+<header>
+  <div class="container nav">
+    <a href="#top" class="brand">
+      <div class="logo"></div>
+      <h1>Cotação Express</h1>
+    </a>
+    <a href="#pedido" class="cta">Quero minha cotação</a>
+  </div>
+</header>
 
-<div class="container">
-  <h2>Enviar Produto</h2>
+<main class="container" id="top">
+<section class="hero">
+  <div class="panel glass">
+    <h2>Importe <span style="color:var(--pri)">iPhones</span>, <span style="color:var(--pri)">Samsungs</span> e Electrónicos com <span style="color:var(--pri)">preços baixos</span> e <span style="color:var(--pri)">qualidade alta</span></h2>
+    <p class="lead">Envie a foto/print, seu nome e WhatsApp. Nós retornamos a melhor proposta completa (produto + frete + impostos).</p>
+  </div>
+</section>
 
-  <input type="text" id="nome" placeholder="Nome completo *" required>
-  <input type="tel" id="phone" placeholder="WhatsApp *" pattern="^[78]\d{8}$" required>
-
-  <div class="dropzone" id="dropzone">
-    <div class="dropzone-text">Arraste imagens ou clique aqui</div>
-    <input type="file" id="fileInput" accept="image/*" multiple>
+<section id="pedido" class="form-wrap">
+  <div class="glass card">
+    <h3>Envie a foto do produto</h3>
+    <div class="dropzone" id="dropzone">
+      <input type="file" id="fileInput" accept="image/*">
+      <div id="dzEmpty">
+        <div>Arraste e solte aqui, ou clique para escolher</div>
+        <div class="dz-instr">Dica: print nítido acelera a cotação.</div>
+      </div>
+      <div id="previews" class="previews" hidden></div>
+    </div>
   </div>
 
-  <div class="previews" id="previews"></div>
+  <div class="glass card">
+    <h3>Seus dados</h3>
+    <form id="quoteForm">
+      <div class="field">
+        <label for="nome">Nome completo *</label>
+        <input class="input" id="nome" name="nome" type="text" placeholder="Ex.: João Silva" required>
+      </div>
 
-  <button id="uploadBtn">📩 Enviar</button>
-  <div id="status"></div>
-</div>
+      <div class="field" style="margin-top:10px">
+        <label for="phone">WhatsApp *</label>
+        <div class="phone">
+          <div class="cc">+258</div>
+          <input class="input" id="phone" name="phone" type="tel" pattern="^[78]\d{8}$" minlength="9" maxlength="9" placeholder="841234567" required>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary">📩 Enviar</button>
+        <button type="reset" class="btn btn-ghost">Limpar</button>
+      </div>
+      <div id="msg" class="msg"></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer style="text-align:center; padding:26px 0; color:var(--muted); font-size:12px">
+© <span id="year"></span> Cotação Express • Importação simplificada
+</footer>
 
 <script>
-// --- Configurações Cloudinary ---
-const CLOUD_NAME = "SEU_CLOUD_NAME";       // substitua pelo seu
-const UPLOAD_PRESET = "SEU_UPLOAD_PRESET"; // substitua pelo seu
+// Atualiza ano
+document.getElementById('year').textContent = new Date().getFullYear();
 
-const fileInput = document.getElementById("fileInput");
-const dropzone = document.getElementById("dropzone");
-const previews = document.getElementById("previews");
-const uploadBtn = document.getElementById("uploadBtn");
-const status = document.getElementById("status");
+// Dropzone
+const dz = document.getElementById('dropzone');
+const fileInput = document.getElementById('fileInput');
+const previews = document.getElementById('previews');
 
-let filesToUpload = [];
+dz.addEventListener('dragover', e=>{e.preventDefault(); dz.style.borderColor='var(--pri)';});
+dz.addEventListener('dragleave', ()=>{dz.style.borderColor='rgba(0,229,255,.28)';});
+dz.addEventListener('drop', e=>{e.preventDefault(); dz.style.borderColor='rgba(0,229,255,.28)'; handleFile(e.dataTransfer.files[0]);});
+fileInput.addEventListener('change', e=>{handleFile(e.target.files[0]);});
 
-// --- Dropzone ---
-dropzone.addEventListener("dragover", e=>{e.preventDefault(); dropzone.style.borderColor="#00e5ff";});
-dropzone.addEventListener("dragleave", e=>{dropzone.style.borderColor="rgba(0,229,255,0.4)";});
-dropzone.addEventListener("drop", e=>{e.preventDefault(); handleFiles(e.dataTransfer.files);});
-fileInput.addEventListener("change", e=>{handleFiles(e.target.files);});
-
-function handleFiles(files){
-    for(let f of files){
-        if(!f.type.startsWith('image/')) continue;
-        filesToUpload.push(f);
-
-        const reader = new FileReader();
-        reader.onload = e=>{
-            const div = document.createElement("div");
-            div.className="thumb";
-            div.innerHTML=`<img src="${e.target.result}"><div class="x" onclick="removeFile(this)">✕</div>`;
-            previews.appendChild(div);
-        };
-        reader.readAsDataURL(f);
-    }
+function handleFile(file){
+  if(!file.type.startsWith('image/')) { alert('Apenas imagens'); return; }
+  previews.innerHTML = `<div class="thumb"><img src="${URL.createObjectURL(file)}"><button type="button" class="x" onclick="previews.innerHTML='';fileInput.value='';">✕</button></div>`;
+  previews.hidden=false;
 }
 
-function removeFile(el){
-    const index = Array.from(previews.children).indexOf(el.parentElement);
-    if(index>-1) filesToUpload.splice(index,1);
-    el.parentElement.remove();
-}
+// Envio Cloudinary
+const form = document.getElementById('quoteForm');
+const msg = document.getElementById('msg');
+const CLOUD_NAME = 'dfycprdka';
+const UPLOAD_PRESET = 'two line';
 
-// --- Upload ---
-uploadBtn.addEventListener("click", async ()=>{
-    const nome = document.getElementById("nome").value.trim();
-    const phone = document.getElementById("phone").value.trim();
+form.addEventListener('submit', async e=>{
+  e.preventDefault();
+  if(!fileInput.files[0]){ msg.textContent="Selecione uma imagem!"; msg.className='msg err'; return; }
 
-    if(!nome || !phone || filesToUpload.length===0){
-        alert("Preencha todos os campos e selecione pelo menos uma imagem!");
-        return;
-    }
+  msg.textContent="⏳ Enviando..."; msg.className='msg';
 
-    status.textContent="Enviando...";
-    let uploadedUrls = [];
+  const data = new FormData();
+  data.append('file', fileInput.files[0]);
+  data.append('upload_preset', UPLOAD_PRESET);
 
-    for(let f of filesToUpload){
-        const formData = new FormData();
-        formData.append("file", f);
-        formData.append("upload_preset", UPLOAD_PRESET);
-
-        try{
-            const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/upload`, {
-                method: "POST",
-                body: formData
-            });
-            const data = await res.json();
-            if(data.secure_url) uploadedUrls.push(data.secure_url);
-        }catch(err){
-            console.error(err);
-        }
-    }
-
-    if(uploadedUrls.length>0){
-        status.textContent=`✅ Enviado com sucesso! ${uploadedUrls.length} imagem(ns)`;
-        console.log({nome, phone, images: uploadedUrls});
-        previews.innerHTML="";
-        filesToUpload = [];
+  try{
+    const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, { method:'POST', body:data });
+    const json = await res.json();
+    if(json.secure_url){
+      msg.textContent="✅ Enviado com sucesso!";
+      msg.className='msg ok';
+      console.log("URL da imagem:", json.secure_url);
     } else {
-        status.textContent="❌ Falha no envio!";
+      throw new Error("Erro ao enviar");
     }
+  }catch(err){
+    msg.textContent="❌ Falha no envio!";
+    msg.className='msg err';
+    console.error(err);
+  }
 });
 </script>
 </body>
