@@ -1,78 +1,140 @@
 <!DOCTYPE html>
-<html lang="pt-MZ">
+<html lang="pt-MZ" class="scroll-smooth">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cotação Express — Futurista</title>
+<title>Cotação Express — iPhones, Samsungs & Electrónicos</title>
+<meta name="description" content="Envie a foto/print, seu nome e WhatsApp. Receba cotação rápida de iPhones, Samsungs e eletrônicos.">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 :root{
-  --bg1:#070d19; --bg2:#0b1224; --bg3:#0e1530; --ink:#eaf6ff; --muted:#9db9d2;
-  --pri:#00e5ff; --accent:#7c3aed; --shadow:0 30px 80px rgba(0,0,0,.55);
+  --bg1:#0a0f1f; --bg2:#0d1428; --bg3:#101a33; 
+  --ink:#eaf6ff; --muted:#a0b7cf;
+  --pri:#00e5ff; --accent:#8c3aed; --shadow:0 35px 90px rgba(0,0,0,.65);
+  --card-shadow:0 15px 40px rgba(0,0,0,.55);
+  --transition:.35s ease-in-out;
 }
-html,body{margin:0;padding:0;height:100%;font-family:Inter,sans-serif;color:var(--ink);}
-body{overflow-x:hidden;background:#070d19;}
-canvas#bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);}
+body{
+  background:
+    radial-gradient(1400px 700px at 0% -10%, rgba(140,58,237,.22), transparent 60%),
+    radial-gradient(1400px 700px at 120% 10%, rgba(0,229,255,.18), transparent 60%),
+    linear-gradient(180deg, var(--bg1), var(--bg2) 45%, var(--bg3));
+  background-attachment: fixed;
+}
+a{color:var(--pri); text-decoration:none; transition:var(--transition);}
+a:hover{color:var(--accent);}
 
-a{text-decoration:none;color:var(--pri);}
-.container{max-width:1100px;margin:0 auto;padding:0 18px;}
-
+.container{max-width:1200px;margin:0 auto;padding:0 20px;}
 .glass{
-  background: rgba(255,255,255,0.06);
-  border:1px solid rgba(255,255,255,0.12);
-  backdrop-filter: blur(14px);
-  border-radius:22px;
-  box-shadow: var(--shadow);
-  padding:22px;
-  transition:0.3s;
+  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(12px);
+  border-radius:20px;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
 }
-.glass:hover{box-shadow:0 40px 120px rgba(0,0,0,.6);}
+.glass:hover{box-shadow:0 20px 60px rgba(0,0,0,.7);}
 
-header{position:sticky;top:0;background:rgba(6,10,22,.7);backdrop-filter:blur(12px);padding:16px 0;z-index:50;border-bottom:1px solid rgba(255,255,255,.08);}
-.nav{display:flex;justify-content:space-between;align-items:center;}
-.brand{display:flex;align-items:center;gap:12px;}
-.logo{width:50px;height:50px;border-radius:16px;background: radial-gradient(circle at 30% 30%, #00e5ff, transparent 45%), radial-gradient(circle at 70% 60%, #7c3aed, transparent 45%), linear-gradient(135deg,#0b1224, #1b2a50);display:grid;place-items:center;box-shadow:inset 0 0 20px rgba(0,229,255,.28),0 10px 30px rgba(0,0,0,.5);}
-.brand h1{margin:0;font-family:Poppins;font-size:20px;}
-.nav .cta{padding:12px 18px;border-radius:20px;font-weight:800;background:linear-gradient(135deg,var(--pri),var(--accent));color:#051320;transition:.3s;box-shadow:0 0 8px var(--pri);}
-.nav .cta:hover{transform:scale(1.08);box-shadow:0 0 20px var(--accent);}
+header{position:sticky;top:0; z-index:50; background:rgba(6,10,22,.65); backdrop-filter: blur(12px); border-bottom:1px solid rgba(255,255,255,.08);}
+.nav{display:flex; align-items:center; justify-content:space-between; padding:18px 0;}
+.brand{display:flex; gap:14px; align-items:center;}
+.logo{
+  width:50px; height:50px; border-radius:16px; display:grid; place-items:center;
+  background: radial-gradient(circle at 30% 30%, #00e5ff, transparent 45%), 
+              radial-gradient(circle at 70% 60%, #8c3aed, transparent 45%),
+              linear-gradient(135deg,#0b1224, #1c2a50);
+  box-shadow: inset 0 0 25px rgba(0,229,255,.35),0 12px 35px rgba(0,0,0,.6);
+}
+.brand h1{font-family:Poppins,Inter,sans-serif;margin:0;font-size:20px;letter-spacing:.2px;}
 
-.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:26px;padding:36px 0 20px;}
-.hero h2{font-size:clamp(28px,4vw,46px);}
-.hero .lead{color:var(--muted);margin-top:10px;font-size:16px;}
+.nav .cta{
+  padding:12px 16px;
+  border-radius:16px;
+  background:linear-gradient(135deg,var(--pri),var(--accent));
+  color:#051320;
+  font-weight:800;
+  box-shadow:0 6px 20px rgba(0,0,0,.5);
+  transition:var(--transition);
+}
+.nav .cta:hover{transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,0,0,.6);}
 
-.form-wrap{display:grid;grid-template-columns:1fr .9fr;gap:26px;margin-top:28px;}
-.card{border-radius:24px;}
-label{display:block;margin-bottom:6px;font-size:13px;color:var(--muted);}
-.input{width:100%;padding:14px 14px 14px 48px;border-radius:16px;border:1px solid rgba(255,255,255,.15);background:rgba(0,0,0,.38);color:var(--ink);outline:none;transition:.3s;}
-.input:focus{border-color:var(--pri);box-shadow:0 0 0 5px rgba(0,229,255,.1);}
-.phone{display:grid;grid-template-columns:72px 1fr;gap:10px;}
-.cc{display:grid;place-items:center;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.36);color:var(--muted);}
+/* HERO */
+.hero{display:grid; grid-template-columns:1.2fr 1fr; gap:28px; padding:40px 0 20px;}
+.hero h2{font-family:Poppins,Inter,sans-serif;font-size:clamp(28px,3.5vw,48px);line-height:1.1;margin:10px 0;}
+.hero .lead{color:var(--muted); font-size:16px; margin-bottom:18px;}
+.hero .hero-img{display:grid; place-items:center;}
+.hero .hero-img img{width:100%; max-width:350px; border-radius:20px; box-shadow:var(--card-shadow);}
 
-.dropzone{border:2px dashed rgba(0,229,255,.3);border-radius:20px;padding:20px;text-align:center;cursor:pointer;position:relative;overflow:hidden;background:rgba(0,0,0,.34);transition:.3s;}
-.dropzone:hover{border-color:var(--accent);}
-.dropzone input{position:absolute;inset:0;opacity:0;cursor:pointer;}
-.dz-instr{font-size:14px;color:var(--muted);}
-.previews{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:12px;margin-top:14px;}
-.thumb{position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.08);}
-.thumb img{width:100%;height:100px;object-fit:cover;}
-.thumb .x{position:absolute;top:6px;right:6px;width:26px;height:26px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.2);border-radius:6px;font-size:14px;cursor:pointer;}
-.progress-bar{position:absolute;bottom:0;left:0;height:4px;background:var(--pri);width:0%;transition:.2s;}
+/* Formulário */
+.form-wrap{margin-top:24px; display:grid; grid-template-columns:1fr .95fr; gap:28px;}
+.card{padding:22px; border-radius:20px; transition:var(--transition);}
+.card:hover{transform:scale(1.02);}
 
-.actions{display:flex;gap:12px;margin-top:16px;align-items:center;}
-.btn{padding:14px 18px;border-radius:20px;font-weight:800;border:none;cursor:pointer;transition:.3s;}
-.btn-primary{background:linear-gradient(135deg,var(--pri),var(--accent));color:#04121f;box-shadow:0 0 8px var(--pri);}
-.btn-primary:hover{transform:scale(1.08);box-shadow:0 0 20px var(--accent);}
-.btn-ghost{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--ink);}
-.btn-ghost:hover{transform:scale(1.08);}
-.status-msg{margin-top:14px;font-weight:700;font-size:15px;color:var(--pri);text-align:center;}
+label{font-size:13px;color:var(--muted);display:block;margin-bottom:8px;}
+.field{position:relative;}
+.input{
+  width:100%;
+  background:rgba(0,0,0,.4);
+  color:var(--ink);
+  padding:14px 14px 14px 46px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  outline:none;
+  transition:var(--transition);
+}
+.input:focus{border-color:var(--pri); box-shadow:0 0 0 5px rgba(0,229,255,.1);}
 
-footer{padding:30px 0;text-align:center;color:var(--muted);font-size:13px;}
-@media(max-width:980px){.hero{grid-template-columns:1fr;}.form-wrap{grid-template-columns:1fr;}}
-@media(max-width:620px){.nav .cta{display:none;}}
+.phone{display:grid; grid-template-columns:72px 1fr; gap:10px;}
+.cc{display:grid; place-items:center; border-radius:14px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.36); color:var(--muted); font-weight:600;}
+
+.dropzone{
+  border:2px dashed rgba(0,229,255,.35);
+  border-radius:20px;
+  padding:20px;
+  text-align:center;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  background:rgba(0,0,0,.36);
+  transition:var(--transition);
+}
+.dropzone:hover{border-color:rgba(140,58,237,.5); background:rgba(0,0,0,.45);}
+.dropzone input{position:absolute; inset:0; opacity:0; cursor:pointer;}
+.dz-instr{font-size:15px; color:var(--muted); margin-top:6px;}
+.previews{display:grid; grid-template-columns: repeat(auto-fill,minmax(100px,1fr)); gap:12px; margin-top:14px;}
+.thumb{position:relative; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,.1);}
+.thumb img{display:block; width:100%; height:100px; object-fit:cover;}
+.thumb .x{position:absolute; right:6px; top:6px; background:rgba(0,0,0,.6); border:1px solid rgba(255,255,255,.2); width:26px; height:26px; border-radius:8px; font-size:15px;}
+
+.actions{display:flex; gap:12px; align-items:center; margin-top:18px;}
+.btn{padding:14px 18px; border-radius:16px; font-weight:800; border:none; cursor:pointer; transition:var(--transition);}
+.btn-primary{background:linear-gradient(135deg,var(--pri),var(--accent)); color:#04121f; box-shadow:0 6px 20px rgba(0,0,0,.55);}
+.btn-primary:hover{transform:translateY(-2px);}
+.btn-ghost{background:rgba(255,255,255,.06); color:var(--ink); border:1px solid rgba(255,255,255,.10);}
+.btn-ghost:hover{background:rgba(255,255,255,.1);}
+
+.status-msg{margin-top:14px; font-weight:600; font-size:15px; text-align:center; color:var(--pri);}
+
+footer{
+  text-align:center; padding:30px 0; color:var(--muted); font-size:13px; background:rgba(6,10,22,.6);
+}
+
+/* Produtos em destaque */
+.products{margin-top:60px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:26px;}
+.product-card{background:rgba(255,255,255,.05); border-radius:20px; padding:16px; text-align:center; box-shadow:var(--card-shadow); transition:var(--transition);}
+.product-card img{width:100%; height:180px; object-fit:cover; border-radius:16px; margin-bottom:12px;}
+.product-card h4{margin:0; font-size:16px; color:var(--pri);}
+.product-card p{color:var(--muted); font-size:14px; margin-top:4px;}
+.product-card:hover{transform:translateY(-4px); box-shadow:0 20px 60px rgba(0,0,0,.7);}
+
+@media (max-width:1024px){.hero{grid-template-columns:1fr;}.form-wrap{grid-template-columns:1fr;}}
+@media (max-width:620px){.nav .cta{display:none;}}
 </style>
 </head>
 <body>
-<canvas id="bgCanvas"></canvas>
 
 <header>
   <div class="container nav">
@@ -85,138 +147,143 @@ footer{padding:30px 0;text-align:center;color:var(--muted);font-size:13px;}
 </header>
 
 <main class="container" id="top">
-<section class="hero">
-  <div class="panel glass">
-    <h2>Importe <span style="color:var(--pri)">iPhones</span>, <span style="color:var(--pri)">Samsungs</span> e Electrónicos com <span style="color:var(--pri)">preços baixos</span> e <span style="color:var(--pri)">qualidade alta</span></h2>
-    <p class="lead">Envie a foto/print, seu nome e WhatsApp. Receba cotação completa automaticamente.</p>
-  </div>
-</section>
-
-<section id="pedido" class="form-wrap">
-  <div class="glass card">
-    <h3>Envie a(s) foto(s) do produto</h3>
-    <div class="dropzone" id="dropzone">
-      <input type="file" id="fileInput" accept="image/*" multiple>
-      <div id="dzEmpty">
-        <div>Arraste e solte aqui, ou clique para escolher</div>
-        <div class="dz-instr">Print nítido acelera a cotação.</div>
-      </div>
-      <div id="previews" class="previews" hidden></div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="panel glass">
+      <h2>Importe <span style="color:var(--pri)">iPhones</span>, <span style="color:var(--pri)">Samsungs</span> e Electrónicos com <span style="color:var(--pri)">preços baixos</span> e <span style="color:var(--pri)">qualidade alta</span></h2>
+      <p class="lead">Envie a foto/print, seu nome e WhatsApp. Nós retornamos a melhor proposta completa (produto + frete + impostos).</p>
     </div>
-  </div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1580910051078-94e2b5f23b2f?auto=format&fit=crop&w=400&q=80" alt="iPhone">
+    </div>
+  </section>
 
-  <div class="glass card">
-    <h3>Seus dados</h3>
-    <form id="quoteForm">
-      <div class="field">
-        <label for="nome">Nome completo *</label>
-        <input class="input" id="nome" name="nome" type="text" placeholder="Ex.: João Silva" required>
-      </div>
-      <div class="field" style="margin-top:10px">
-        <label for="phone">WhatsApp *</label>
-        <div class="phone">
-          <div class="cc">+258</div>
-          <input class="input" id="phone" name="phone" type="tel" pattern="^[78]\d{8}$" minlength="9" maxlength="9" placeholder="841234567" required>
+  <!-- Produtos em destaque -->
+  <section class="products">
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=400&q=80" alt="iPhone 15">
+      <h4>iPhone 15</h4>
+      <p>Alta performance e design premium</p>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=400&q=80" alt="Samsung Galaxy S23">
+      <h4>Samsung Galaxy S23</h4>
+      <p>Câmera top e bateria duradoura</p>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1616628189128-3f5f4caa2084?auto=format&fit=crop&w=400&q=80" alt="MacBook Pro">
+      <h4>MacBook Pro</h4>
+      <p>Velocidade e eficiência para profissionais</p>
+    </div>
+  </section>
+
+  <!-- Formulário -->
+  <section id="pedido" class="form-wrap">
+    <div class="glass card">
+      <h3>Envie a foto do produto</h3>
+      <div class="dropzone" id="dropzone">
+        <input type="file" id="fileInput" accept="image/*">
+        <div id="dzEmpty">
+          <div>Arraste e solte aqui, ou clique para escolher</div>
+          <div class="dz-instr">Dica: print nítido acelera a cotação.</div>
         </div>
+        <div id="previews" class="previews" hidden></div>
       </div>
-      <div class="actions">
-        <button type="submit" class="btn btn-primary">📩 Enviar</button>
-        <button type="reset" class="btn btn-ghost">Limpar</button>
-      </div>
-      <div id="status" class="status-msg"></div>
-    </form>
-  </div>
-</section>
+    </div>
+
+    <div class="glass card">
+      <h3>Seus dados</h3>
+      <form id="quoteForm">
+        <div class="field">
+          <label for="nome">Nome completo *</label>
+          <input class="input" id="nome" name="nome" type="text" placeholder="Ex.: João Silva" required>
+        </div>
+
+        <div class="field" style="margin-top:10px">
+          <label for="phone">WhatsApp *</label>
+          <div class="phone">
+            <div class="cc">+258</div>
+            <input class="input" id="phone" name="phone" type="tel" pattern="^[78]\d{8}$" minlength="9" maxlength="9" placeholder="841234567" required>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">📩 Enviar</button>
+          <button type="reset" class="btn btn-ghost">Limpar</button>
+        </div>
+        <div id="status" class="status-msg"></div>
+      </form>
+    </div>
+  </section>
 </main>
 
 <footer>
-© <span id="year"></span> Cotação Express
+© <span id="year"></span> Cotação Express • Importação simplificada
 </footer>
 
 <script>
-// Ano
+// Atualiza ano
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Fundo animado com partículas
-const canvas = document.getElementById('bgCanvas');
-const ctx = canvas.getContext('2d');
-let w=canvas.width=window.innerWidth;
-let h=canvas.height=window.innerHeight;
-window.addEventListener('resize',()=>{w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight;});
-class Particle{
-  constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=Math.random()*1-0.5;this.vy=Math.random()*1-0.5;this.size=Math.random()*2+1;}
-  draw(){ctx.fillStyle='rgba(0,229,255,0.4)';ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();}
-  update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>w)this.vx*=-1;if(this.y<0||this.y>h)this.vy*=-1;}
-}
-let particles=[];
-for(let i=0;i<120;i++)particles.push(new Particle());
-function animate(){
-  ctx.clearRect(0,0,w,h);
-  particles.forEach(p=>{p.update();p.draw();});
-  requestAnimationFrame(animate);
-}
-animate();
+// Dropzone Preview
+const dz = document.getElementById('dropzone');
+const fileInput = document.getElementById('fileInput');
+const previews = document.getElementById('previews');
 
-// Dropzone múltiplo
-const dz=document.getElementById('dropzone');
-const fileInput=document.getElementById('fileInput');
-const previews=document.getElementById('previews');
-let selectedFiles=[];
-dz.addEventListener('dragover',e=>{e.preventDefault();dz.style.borderColor='var(--pri)';});
-dz.addEventListener('dragleave',()=>{dz.style.borderColor='rgba(0,229,255,.28)';});
-dz.addEventListener('drop',async e=>{e.preventDefault();dz.style.borderColor='rgba(0,229,255,.28)';await handleFiles(e.dataTransfer.files);});
-fileInput.addEventListener('change',async e=>{await handleFiles(e.target.files);});
-async function handleFiles(files){
-  selectedFiles=[...files];
-  previews.innerHTML='';
-  selectedFiles.forEach((f,i)=>{
-    if(!f.type.startsWith('image/')) return;
-    const div=document.createElement('div');div.className='thumb';
-    div.innerHTML=`<img src="${URL.createObjectURL(f)}"><div class="progress-bar" id="progress${i}"></div><button type="button" class="x" onclick="removeFile(${i})">✕</button>`;
-    previews.appendChild(div);
-  });
-  previews.hidden=false;
-  document.getElementById('dzEmpty').hidden=true;
+dz.addEventListener('dragover', e=>{e.preventDefault(); dz.style.borderColor='var(--pri)';});
+dz.addEventListener('dragleave', ()=>{dz.style.borderColor='rgba(0,229,255,.35)';});
+dz.addEventListener('drop', async e=>{e.preventDefault(); dz.style.borderColor='rgba(0,229,255,.35)'; const f=e.dataTransfer.files[0]; await handleFile(f);});
+fileInput.addEventListener('change', async e=>{const f=e.target.files[0]; await handleFile(f);});
+
+let selectedFile = null;
+async function handleFile(f){
+  if(!f.type.startsWith('image/')) { alert('Apenas imagens'); return; }
+  selectedFile = f;
+  previews.innerHTML = `<div class="thumb"><img src="${URL.createObjectURL(f)}"><button type="button" class="x" onclick="previews.innerHTML='';selectedFile=null;fileInput.value='';">✕</button></div>`;
+  previews.hidden=false; document.getElementById('dzEmpty').hidden=true;
 }
-function removeFile(i){selectedFiles.splice(i,1);handleFiles(selectedFiles);}
 
-// Config Cloudinary e Google Sheets
-const CLOUD_NAME="dfycprdka";
-const UPLOAD_PRESET="two line";
-const SHEETS_WEBAPP_URL="https://script.google.com/macros/s/AKfycbyjUY1ogQeh0zCdNU5512iiH5yRuTmjeMenFC9qAlkZG3lmkwj1rj81JUxnp_teO6PpZQ/exec";
+// Configuração Cloudinary
+const CLOUD_NAME = "dfycprdka";
+const UPLOAD_PRESET = "two line";
 
-// Envio formulário
-document.getElementById('quoteForm').addEventListener('submit',async e=>{
+// Envio do formulário
+document.getElementById('quoteForm').addEventListener('submit', async (e)=>{
   e.preventDefault();
-  const statusEl=document.getElementById('status');
-  statusEl.textContent="⏳ Enviando...";
-  const nome=document.getElementById('nome').value;
-  const phone=document.getElementById('phone').value;
-  if(selectedFiles.length===0){statusEl.textContent="❌ Selecione pelo menos uma imagem.";return;}
+  const statusEl = document.getElementById('status');
+  statusEl.textContent = "⏳ Enviando...";
 
-  try{
-    for(let i=0;i<selectedFiles.length;i++){
-      const f=selectedFiles[i];
-      const formData=new FormData();
-      formData.append("file",f);
-      formData.append("upload_preset",UPLOAD_PRESET);
+  const nome = document.getElementById('nome').value.trim();
+  const phone = document.getElementById('phone').value.trim();
 
-      const cloudRes=await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/upload`,{method:"POST",body:formData});
-      const cloudData=await cloudRes.json();
-      const imageUrl=cloudData.secure_url;
-      document.getElementById(`progress${i}`).style.width='100%';
+  if(!selectedFile){
+    statusEl.textContent = "❌ Selecione uma imagem.";
+    return;
+  }
 
-      // envia para Google Sheets
-      await fetch(SHEETS_WEBAPP_URL,{
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({nome, phone, imagem_url:imageUrl})
-      });
-    }
-    statusEl.textContent="✅ Enviado com sucesso!";
+  try {
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+    formData.append("upload_preset", UPLOAD_PRESET);
+    formData.append("context", `nome=${nome}|phone=${phone}`);
+
+    const cloudRes = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/upload`, {
+      method:"POST",
+      body: formData
+    });
+    const cloudData = await cloudRes.json();
+    console.log("Upload Cloudinary:", cloudData);
+
+    statusEl.textContent = "✅ Enviado com sucesso!";
     document.getElementById('quoteForm').reset();
-    previews.innerHTML='';selectedFiles=[];document.getElementById('dzEmpty').hidden=false;
-  }catch(err){console.error(err);statusEl.textContent="❌ Ocorreu um erro ao enviar.";}
+    previews.innerHTML="";
+    selectedFile = null;
+    document.getElementById('dzEmpty').hidden=false;
+
+  } catch(err){
+    console.error(err);
+    statusEl.textContent = "❌ Ocorreu um erro ao enviar.";
+  }
 });
 </script>
 </body>
