@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cotação Express — iPhones, Samsungs & Electrónicos</title>
-<meta name="description" content="Envie a foto/print, seu nome e WhatsApp. Receba cotação rápida de iPhones, Samsungs e eletrônicos.">
+<title>Cotação Express — Xitique Digital</title>
+<meta name="description" content="Envie uma foto, participe de xitique e compre iPhones/Samsungs com cotação e financiamento coletivo">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
 :root{
-  --bg1:#0a0f1f; --bg2:#0d1428; --bg3:#101a33; 
+  --bg1:#0a0f1f; --bg2:#0d1428; --bg3:#101a33;
   --ink:#eaf6ff; --muted:#a0b7cf;
   --pri:#00e5ff; --accent:#8c3aed; --shadow:0 35px 90px rgba(0,0,0,.65);
   --card-shadow:0 15px 40px rgba(0,0,0,.55);
   --transition:.35s ease-in-out;
+  --glass-bg: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
 }
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);}
@@ -23,115 +23,101 @@ body{
     radial-gradient(1400px 700px at 120% 10%, rgba(0,229,255,.18), transparent 60%),
     linear-gradient(180deg, var(--bg1), var(--bg2) 45%, var(--bg3));
   background-attachment: fixed;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 a{color:var(--pri); text-decoration:none; transition:var(--transition);}
 a:hover{color:var(--accent);}
 
 .container{max-width:1200px;margin:0 auto;padding:0 20px;}
 .glass{
-  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-  border:1px solid rgba(255,255,255,.10);
+  background:var(--glass-bg);
+  border:1px solid rgba(255,255,255,.06);
   backdrop-filter: blur(12px);
-  border-radius:20px;
+  border-radius:16px;
   box-shadow: var(--card-shadow);
   transition: var(--transition);
 }
-.glass:hover{box-shadow:0 20px 60px rgba(0,0,0,.7);}
+.glass:hover{box-shadow:0 20px 60px rgba(0,0,0,.65);}
 
-header{position:sticky;top:0; z-index:50; background:rgba(6,10,22,.65); backdrop-filter: blur(12px); border-bottom:1px solid rgba(255,255,255,.08);}
-.nav{display:flex; align-items:center; justify-content:space-between; padding:18px 0;}
+/* header */
+header{position:sticky;top:0; z-index:60; background:linear-gradient(90deg, rgba(6,10,22,.75), rgba(6,10,22,.5)); backdrop-filter: blur(8px); border-bottom:1px solid rgba(255,255,255,.04);}
+.nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
 .brand{display:flex; gap:14px; align-items:center;}
-.logo{
-  width:50px; height:50px; border-radius:16px; display:grid; place-items:center;
-  background: radial-gradient(circle at 30% 30%, #00e5ff, transparent 45%), 
+.logo{width:50px; height:50px; border-radius:12px; display:grid; place-items:center;
+  background: radial-gradient(circle at 30% 30%, #00e5ff, transparent 45%),
               radial-gradient(circle at 70% 60%, #8c3aed, transparent 45%),
               linear-gradient(135deg,#0b1224, #1c2a50);
-  box-shadow: inset 0 0 25px rgba(0,229,255,.35),0 12px 35px rgba(0,0,0,.6);
+  box-shadow: inset 0 0 18px rgba(0,229,255,.25),0 10px 30px rgba(0,0,0,.6);
 }
-.brand h1{font-family:Poppins,Inter,sans-serif;margin:0;font-size:20px;letter-spacing:.2px;}
-
-.nav .cta{
-  padding:12px 16px;
-  border-radius:16px;
-  background:linear-gradient(135deg,var(--pri),var(--accent));
-  color:#051320;
-  font-weight:800;
-  box-shadow:0 6px 20px rgba(0,0,0,.5);
-  transition:var(--transition);
+.brand h1{font-family:Poppins,Inter,sans-serif;margin:0;font-size:18px;letter-spacing:.2px;}
+.nav .actions{display:flex; gap:12px; align-items:center;}
+.nav .cta, .nav .cta-ghost{
+  padding:10px 14px; border-radius:12px; font-weight:700; cursor:pointer; transition:var(--transition);
 }
-.nav .cta:hover{transform:translateY(-2px); box-shadow:0 10px 30px rgba(0,0,0,.6);}
+.nav .cta{background:linear-gradient(135deg,var(--pri),var(--accent)); color:#051320; box-shadow:0 6px 18px rgba(0,0,0,.5);}
+.nav .cta:hover{transform:translateY(-2px)}
+.nav .cta-ghost{background:rgba(255,255,255,.03); color:var(--ink); border:1px solid rgba(255,255,255,.06)}
 
-/* HERO */
-.hero{display:grid; grid-template-columns:1.2fr 1fr; gap:28px; padding:40px 0 20px;}
-.hero h2{font-family:Poppins,Inter,sans-serif;font-size:clamp(28px,3.5vw,48px);line-height:1.1;margin:10px 0;}
-.hero .lead{color:var(--muted); font-size:16px; margin-bottom:18px;}
-.hero .hero-img{display:grid; place-items:center;}
-.hero .hero-img img{width:100%; max-width:350px; border-radius:20px; box-shadow:var(--card-shadow);}
+/* layout */
+.hero{display:grid; grid-template-columns:1.2fr 1fr; gap:24px; padding:28px 0 10px;}
+.hero h2{font-family:Poppins,Inter,sans-serif;font-size:clamp(26px,3.5vw,44px);line-height:1.05;margin:8px 0;}
+.hero .lead{color:var(--muted); font-size:15px;}
+.hero .hero-media{display:grid; place-items:center;}
 
-/* Formulário */
-.form-wrap{margin-top:24px; display:grid; grid-template-columns:1fr .95fr; gap:28px;}
-.card{padding:22px; border-radius:20px; transition:var(--transition);}
-.card:hover{transform:scale(1.02);}
-
-label{font-size:13px;color:var(--muted);display:block;margin-bottom:8px;}
-.field{position:relative;}
-.input{
-  width:100%;
-  background:rgba(0,0,0,.4);
-  color:var(--ink);
-  padding:14px 14px 14px 46px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.12);
-  outline:none;
-  transition:var(--transition);
-}
-.input:focus{border-color:var(--pri); box-shadow:0 0 0 5px rgba(0,229,255,.1);}
-
-.phone{display:grid; grid-template-columns:72px 1fr; gap:10px;}
-.cc{display:grid; place-items:center; border-radius:14px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.36); color:var(--muted); font-weight:600;}
-
-.dropzone{
-  border:2px dashed rgba(0,229,255,.35);
-  border-radius:20px;
-  padding:20px;
-  text-align:center;
-  cursor:pointer;
-  position:relative;
-  overflow:hidden;
-  background:rgba(0,0,0,.36);
-  transition:var(--transition);
-}
-.dropzone:hover{border-color:rgba(140,58,237,.5); background:rgba(0,0,0,.45);}
-.dropzone input{position:absolute; inset:0; opacity:0; cursor:pointer;}
-.dz-instr{font-size:15px; color:var(--muted); margin-top:6px;}
-.previews{display:grid; grid-template-columns: repeat(auto-fill,minmax(100px,1fr)); gap:12px; margin-top:14px;}
-.thumb{position:relative; border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,.1);}
-.thumb img{display:block; width:100%; height:100px; object-fit:cover;}
-.thumb .x{position:absolute; right:6px; top:6px; background:rgba(0,0,0,.6); border:1px solid rgba(255,255,255,.2); width:26px; height:26px; border-radius:8px; font-size:15px;}
-
-.actions{display:flex; gap:12px; align-items:center; margin-top:18px;}
-.btn{padding:14px 18px; border-radius:16px; font-weight:800; border:none; cursor:pointer; transition:var(--transition);}
-.btn-primary{background:linear-gradient(135deg,var(--pri),var(--accent)); color:#04121f; box-shadow:0 6px 20px rgba(0,0,0,.55);}
-.btn-primary:hover{transform:translateY(-2px);}
-.btn-ghost{background:rgba(255,255,255,.06); color:var(--ink); border:1px solid rgba(255,255,255,.10);}
-.btn-ghost:hover{background:rgba(255,255,255,.1);}
-
-.status-msg{margin-top:14px; font-weight:600; font-size:15px; text-align:center; color:var(--pri);}
-
-footer{
-  text-align:center; padding:30px 0; color:var(--muted); font-size:13px; background:rgba(6,10,22,.6);
-}
-
-/* Produtos em destaque */
-.products{margin-top:60px; display:grid; grid-template-columns: repeat(auto-fit,minmax(350px, 1fr)); gap:26px; justify-content: center;}
-.product-card{background:rgba(255,255,255,.05); border-radius:20px; padding:16px; text-align:center; box-shadow: var(--card-shadow); transition: var(--transition); display: flex; flex-direction: column; align-items: center;}
-.product-card img, .product-card video {width:100%; max-width: 350px; object-fit:cover; border-radius:20px; box-shadow: var(--card-shadow);}
+/* products grid */
+.products{margin-top:28px; display:grid; grid-template-columns: repeat(auto-fit,minmax(260px, 1fr)); gap:18px; align-items:start;}
+.product-card{background:rgba(255,255,255,.03); border-radius:12px; padding:12px; text-align:center; box-shadow: var(--card-shadow); transition: var(--transition); display:flex; flex-direction:column; gap:12px; min-height:230px;}
+.product-card img, .product-card video {width:100%; height:160px; object-fit:cover; border-radius:10px; box-shadow: var(--card-shadow);}
 .product-card h4{margin:0; font-size:16px; color:var(--pri);}
-.product-card p{color:var(--muted); font-size:14px; margin-top:4px;}
-.product-card:hover{transform:translateY(-4px); box-shadow:0 20px 60px rgba(0,0,0,.7);}
+.product-card p{color:var(--muted); font-size:13px; margin:0;}
+.product-card .card-actions{display:flex; gap:8px; justify-content:center; margin-top:auto;}
+.btn{padding:10px 12px; border-radius:10px; font-weight:700; border:none; cursor:pointer; transition:var(--transition); font-size:14px;}
+.btn-primary{background:linear-gradient(135deg,var(--pri),var(--accent)); color:#04121f; box-shadow:0 6px 20px rgba(0,0,0,.4);}
+.btn-ghost{background:rgba(255,255,255,.03); color:var(--ink); border:1px solid rgba(255,255,255,.06);}
+.btn-small{padding:8px 10px; font-size:13px; border-radius:8px;}
 
-@media (max-width:1024px){.hero{grid-template-columns:1fr;}.form-wrap{grid-template-columns:1fr;}}
-@media (max-width:620px){.nav .cta{display:none;}}
+/* xitique area */
+.xitique-wrap{display:grid; grid-template-columns: 1fr 360px; gap:18px; margin-top:28px;}
+@media (max-width:980px){.xitique-wrap{grid-template-columns:1fr;}}
+.groups-list{display:grid; gap:12px;}
+.group-card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)); border-radius:12px; padding:12px; display:flex; gap:12px; align-items:flex-start;}
+.group-left{flex:1}
+.progress{height:10px; background:rgba(255,255,255,.04); border-radius:8px; overflow:hidden; margin-top:8px}
+.progress > div{height:100%; background:linear-gradient(90deg,var(--pri),var(--accent)); width:0%; transition:width .6s}
+.tag{background:rgba(255,255,255,.04); padding:6px 8px; border-radius:8px; font-size:12px; color:var(--muted);}
+
+/* wallet panel */
+.panel-side{position:sticky; top:90px;}
+.wallet{padding:12px; border-radius:12px; display:flex; flex-direction:column; gap:10px}
+.wallet .balance{font-size:20px; font-weight:800; color:var(--pri)}
+.input, input[type="text"], input[type="number"], textarea, select{
+  width:100%; background:rgba(0,0,0,.36); color:var(--ink); padding:10px; border-radius:10px; border:1px solid rgba(255,255,255,.08); outline:none;
+}
+
+/* modals / chat */
+.modal{position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:150; background:rgba(2,6,12,.5);}
+.modal.show{display:flex;}
+.modal-card{width:100%; max-width:920px; background:var(--glass-bg); border-radius:12px; padding:14px; box-shadow:var(--card-shadow);}
+.group-members{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;}
+.member-pill{background:rgba(255,255,255,.03); padding:6px 8px; border-radius:8px; font-size:13px; color:var(--muted);}
+
+/* chat */
+.chat{height:300px; overflow:auto; background:rgba(0,0,0,.26); padding:10px; border-radius:10px; border:1px solid rgba(255,255,255,.03)}
+.chat .msg{margin-bottom:8px}
+.chat .msg .who{font-weight:700; font-size:13px}
+.chat .msg .txt{color:var(--ink); font-size:14px}
+
+/* small helpers */
+.kv{display:flex; gap:8px; align-items:center}
+.small{font-size:13px; color:var(--muted)}
+.badge{background:rgba(255,255,255,.04); padding:6px 8px; border-radius:8px; font-weight:700}
+
+/* responsive */
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .product-card img, .product-card video{height:140px}
+}
 </style>
 </head>
 <body>
@@ -142,54 +128,124 @@ footer{
       <div class="logo"></div>
       <h1>Cotação Express</h1>
     </a>
-    <a href="#pedido" class="cta">Quero minha cotação</a>
+
+    <div class="actions">
+      <button id="btnOpenLogin" class="cta-ghost">Entrar / Perfil</button>
+      <button id="btnOpenXitique" class="cta">Xitique & Grupos</button>
+    </div>
   </div>
 </header>
 
 <main class="container" id="top">
-  <!-- Hero -->
+
+  <!-- HERO -->
   <section class="hero">
-    <div class="panel glass">
+    <div class="panel glass" style="padding:18px">
       <h2>Importe <span style="color:var(--pri)">iPhones</span>, <span style="color:var(--pri)">Samsungs</span> e Electrónicos com <span style="color:var(--pri)">preços baixos</span> e <span style="color:var(--pri)">qualidade alta</span></h2>
-      <p class="lead">Envie a foto/print, seu nome e WhatsApp. Nós retornamos a melhor proposta completa (produto + frete + impostos).</p>
-    </div>
-   <div class="hero-img">
-  <video autoplay muted loop playsinline style="width:100%; max-width:350px; border-radius:20px; box-shadow:var(--card-shadow); object-fit:cover;">
-    <source src="intro.mp4" type="video/mp4">
-    Seu navegador não suporta vídeo.
-  </video>
-</div>
-  </section>
-
-  <!-- Produtos em destaque -->
-  <section class="products">
-    <div class="product-card">
-      <img src="iphone 13 (2).jpg" alt="iPhone 13">
-      <h4>iPhone 13</h4>
-      <p>Alta performance e design premium</p>
+      <p class="lead">Envie a foto/print, seu nome e WhatsApp. Oferecemos xitique digital — participe e pague pouco a pouco com segurança. <strong>Os aparelhos são Grade A.</strong></p>
+      <div style="display:flex; gap:8px; margin-top:12px;">
+        <button id="ctaQuote" class="btn btn-primary">📩 Quero cotação</button>
+        <button id="ctaXitique" class="btn btn-ghost">🔁 Ver Xitique</button>
+      </div>
     </div>
 
-    <div class="product-card">
-      <video autoplay muted loop playsinline style="width:100%; max-width:350px; border-radius:20px; box-shadow:var(--card-shadow); object-fit:cover;">
-    <source src="iphone 16.mp4" type="video/mp4">
-    Seu navegador não suporta vídeo.
-  </video>
-      <h4>iphone 16</h4>
-      <p>Câmera top e bateria duradoura</p>
-    </div>
-
-    
-    <div class="product-card">
-      <img src="S23.jpg" alt="Samsung Galaxy S23">
-      <h4>Samsung S23</h4>
-      <p>Velocidade e eficiência para profissionais</p>
+    <div class="hero-media glass" style="padding:12px;">
+      <video autoplay muted loop playsinline style="width:100%; border-radius:12px; box-shadow:var(--card-shadow); object-fit:cover;">
+        <source src="intro.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo.
+      </video>
     </div>
   </section>
 
-  <!-- Formulário -->
+  <!-- PRODUTOS -->
+  <section class="products" id="products">
+    <!-- product cards are injected by JS -->
+  </section>
+
+  <!-- XITIQUE / SIDEBAR -->
+  <section class="xitique-wrap" style="margin-bottom:60px;">
+    <div>
+      <h3 style="margin:6px 0 10px">Grupos de Xitique ativos</h3>
+      <div class="groups-list glass" id="groupsList" style="padding:12px; min-height:180px;">
+        <!-- grupos injetados por JS -->
+      </div>
+
+      <div style="margin-top:18px;" class="glass" id="createPanel">
+        <div style="padding:12px">
+          <h4>Criar novo grupo</h4>
+          <div style="display:grid; gap:10px; margin-top:8px;">
+            <label class="small">Produto</label>
+            <select id="createProduct" class="input"></select>
+            <div style="display:flex; gap:8px;">
+              <div style="flex:1">
+                <label class="small">Tamanho do grupo (pessoas)</label>
+                <input id="createSize" type="number" min="2" value="6" class="input">
+              </div>
+              <div style="flex:1">
+                <label class="small">Valor da parcela (MZN)</label>
+                <input id="createValue" type="number" min="100" value="5000" class="input">
+              </div>
+            </div>
+            <div style="display:flex; gap:8px;">
+              <div style="flex:1">
+                <label class="small">Periodicidade</label>
+                <select id="createPeriod" class="input">
+                  <option value="weekly">Semanal</option>
+                  <option value="monthly">Mensal</option>
+                </select>
+              </div>
+              <div style="flex:1">
+                <label class="small">Prazo formação (dias)</label>
+                <input id="createDeadline" type="number" min="1" value="14" class="input">
+              </div>
+            </div>
+
+            <div style="display:flex; gap:8px;">
+              <button id="btnCreateGroup" class="btn btn-primary">Criar Grupo</button>
+              <button id="btnDemoFill" class="btn btn-ghost">Demo: popular 2 grupos</button>
+            </div>
+            <div class="small">Ao criar, cada membro deverá pagar a 1ª parcela para garantir a vaga. Grupos só iniciam quando completam o número mínimo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar: wallet, meu perfil, meus grupos -->
+    <aside class="panel-side">
+      <div class="wallet glass" style="padding:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center">
+          <div>
+            <div class="small">Minha Carteira</div>
+            <div class="balance" id="walletBalance">0 MZN</div>
+          </div>
+          <div style="text-align:right">
+            <div class="small">Usuário:</div>
+            <div id="userName" class="badge">Convidado</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:8px; margin-top:8px;">
+          <input id="depositAmount" type="number" min="100" value="5000" class="input" placeholder="Valor MZN">
+          <button id="btnDeposit" class="btn btn-primary">Depositar</button>
+        </div>
+
+        <div style="margin-top:8px;">
+          <h4 style="margin:6px 0">Meus grupos</h4>
+          <div id="myGroups" class="small">Sem grupos</div>
+        </div>
+
+        <div style="margin-top:8px;">
+          <h4 style="margin:6px 0">Notificações</h4>
+          <div id="notifList" class="small">Nenhuma notificação</div>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- FORMULÁRIO DE COTAÇÃO (mantive o seu original, expandindo para enviar junto do xitique) -->
   <section id="pedido" class="form-wrap">
-    <div class="glass card">
-      <h3>Envie a foto do produto</h3>
+    <div class="glass card" style="padding:18px;">
+      <h3>Envie a foto do produto (para cotação)</h3>
       <div class="dropzone" id="dropzone">
         <input type="file" id="fileInput" accept="image/*">
         <div id="dzEmpty">
@@ -198,10 +254,11 @@ footer{
         </div>
         <div id="previews" class="previews" hidden></div>
       </div>
+      <div class="small" style="margin-top:10px;">Podes também enviar prints para apoiar um pedido de xitique (ex.: referência do aparelho).</div>
     </div>
 
-    <div class="glass card">
-      <h3>Seus dados</h3>
+    <div class="glass card" style="padding:18px;">
+      <h3>Seus dados / Entrar no sistema</h3>
       <form id="quoteForm">
         <div class="field">
           <label for="nome">Nome completo *</label>
@@ -210,90 +267,855 @@ footer{
 
         <div class="field" style="margin-top:10px">
           <label for="phone">WhatsApp *</label>
-          <div class="phone">
+          <div class="phone" style="grid-template-columns:72px 1fr;">
             <div class="cc">+258</div>
             <input class="input" id="phone" name="phone" type="tel" pattern="^[78]\d{8}$" minlength="9" maxlength="9" placeholder="841234567" required>
           </div>
         </div>
 
-        <div class="actions">
-          <button type="submit" class="btn btn-primary">📩 Enviar</button>
-          <button type="reset" class="btn btn-ghost">Limpar</button>
+        <div style="margin-top:12px;">
+          <label class="small">Já tens conta?</label>
+          <div style="display:flex; gap:8px;">
+            <button id="btnLoginQuick" type="button" class="btn btn-primary">Entrar / Salvar</button>
+            <button type="reset" class="btn btn-ghost">Limpar</button>
+          </div>
+        </div>
+
+        <div class="actions" style="margin-top:12px;">
+          <button type="button" id="btnSendQuote" class="btn btn-primary">📩 Enviar cotação</button>
         </div>
         <div id="status" class="status-msg"></div>
       </form>
     </div>
   </section>
+
+  <footer style="margin-top:30px;">
+    <div class="container small" style="text-align:center; padding:18px 0;">
+      © <span id="year"></span> Cotação Express • Importação simplificada • Xitique digital (demo)
+    </div>
+  </footer>
 </main>
 
-<footer>
-© <span id="year"></span> Cotação Express • Importação simplificada
-</footer>
+<!-- MODAL: GROUP DETAILS + CHAT -->
+<div id="modalGroup" class="modal">
+  <div class="modal-card">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <h4 id="modalTitle">Grupo</h4>
+      <div><button id="closeModal" class="btn btn-ghost">Fechar</button></div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 320px; gap:12px; margin-top:8px;">
+      <div>
+        <div class="small">Detalhes</div>
+        <div id="modalDesc" style="margin-top:6px"></div>
+        <div style="margin-top:8px"><strong>Progresso</strong></div>
+        <div class="progress"><div id="modalProgress"></div></div>
+        <div class="group-members" id="modalMembers"></div>
+
+        <div style="display:flex; gap:8px; margin-top:10px;">
+          <button id="btnJoinGroup" class="btn btn-primary">Entrar e pagar 1ª parcela</button>
+          <button id="btnLeaveGroup" class="btn btn-ghost">Sair / Solicitar reembolso</button>
+          <button id="btnClaimPayout" class="btn btn-primary" style="display:none">Receber bolada (comprar)</button>
+        </div>
+
+        <div style="margin-top:12px;">
+          <h4 class="small">Timeline / logs</h4>
+          <div id="groupLogs" class="small" style="margin-top:6px; background:rgba(0,0,0,.16); padding:8px; border-radius:8px;"></div>
+        </div>
+      </div>
+
+      <!-- Chat + contributions -->
+      <div>
+        <div class="small">Chat do grupo</div>
+        <div id="chatBox" class="chat"></div>
+        <div style="display:flex; gap:8px; margin-top:8px;">
+          <input id="chatInput" class="input" placeholder="Escreva aqui..." />
+          <button id="btnSendChat" class="btn btn-primary">Enviar</button>
+        </div>
+
+        <div style="margin-top:12px;">
+          <div class="small">Contribuições / Rodada atual</div>
+          <div id="contribs" class="small" style="margin-top:6px; background:rgba(0,0,0,.16); padding:8px; border-radius:8px;"></div>
+          <div style="display:flex; gap:8px; margin-top:8px;">
+            <button id="btnPayNow" class="btn btn-primary">Pagar minha parcela</button>
+            <button id="btnAutoCollect" class="btn btn-ghost">Coletar rodadas (admin)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
-// Atualiza ano
+/* ============================
+   DADOS INICIAIS / HELPERS
+   ============================ */
+
+/*
+  Nota: para produção, estes dados deverão vir do servidor (APIs).
+  Aqui usamos localStorage para demo/local persistence.
+*/
+const STORAGE_KEYS = {
+  USER: 'cx_user',
+  WALLET: 'cx_wallet',
+  GROUPS: 'cx_groups',
+  PRODUCTS: 'cx_products',
+  MESSAGES: 'cx_messages',
+  TRANSACTIONS: 'cx_tx'
+};
+
+// Demo: produtos
+const defaultProducts = [
+  { id: 'p_iphone13', brand:'iPhone', name:'iPhone 13', price: 45000, grade:'A' },
+  { id: 'p_iphone16', brand:'iPhone', name:'iPhone 16', price: 85000, grade:'A' },
+  { id: 'p_s23', brand:'Samsung', name:'Galaxy S23 Ultra', price: 79000, grade:'A' },
+];
+
+// Cria armazenamento inicial quando vazio
+function seedInitialData(){
+  if(!localStorage.getItem(STORAGE_KEYS.PRODUCTS)) localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(defaultProducts));
+  if(!localStorage.getItem(STORAGE_KEYS.GROUPS)) localStorage.setItem(STORAGE_KEYS.GROUPS, JSON.stringify([]));
+  if(!localStorage.getItem(STORAGE_KEYS.MESSAGES)) localStorage.setItem(STORAGE_KEYS.MESSAGES, JSON.stringify({}));
+  if(!localStorage.getItem(STORAGE_KEYS.WALLET)) localStorage.setItem(STORAGE_KEYS.WALLET, JSON.stringify({})); // mapa userId->balance
+  if(!localStorage.getItem(STORAGE_KEYS.TRANSACTIONS)) localStorage.setItem(STORAGE_KEYS.TRANSACTIONS, JSON.stringify([]));
+}
+seedInitialData();
+
+function uid(prefix='id'){ return prefix + '_' + Math.random().toString(36).slice(2,9); }
+function now(){ return Date.now(); }
+function daysToMs(d){ return d * 24 * 60 * 60 * 1000; }
+
+/* Current user management (simple) */
+function getCurrentUser(){
+  const raw = localStorage.getItem(STORAGE_KEYS.USER);
+  if(!raw) return null;
+  return JSON.parse(raw);
+}
+function saveCurrentUser(user){
+  localStorage.setItem(STORAGE_KEYS.USER, JSON.stringify(user));
+  updateUIUser();
+}
+
+/* Wallet helpers */
+function getWallet(){
+  return JSON.parse(localStorage.getItem(STORAGE_KEYS.WALLET) || '{}');
+}
+function setWallet(obj){ localStorage.setItem(STORAGE_KEYS.WALLET, JSON.stringify(obj)); }
+function getBalance(userId){
+  const w = getWallet();
+  return (w[userId] || 0);
+}
+function addToWallet(userId, amount, note='deposit'){
+  const w = getWallet();
+  w[userId] = (w[userId] || 0) + Number(amount);
+  setWallet(w);
+  // save tx
+  const txs = JSON.parse(localStorage.getItem(STORAGE_KEYS.TRANSACTIONS) || '[]');
+  txs.push({ id: uid('tx'), userId, amount: Number(amount), type: note, time: now() });
+  localStorage.setItem(STORAGE_KEYS.TRANSACTIONS, JSON.stringify(txs));
+}
+
+/* Groups helpers (load/save) */
+function getGroups(){ return JSON.parse(localStorage.getItem(STORAGE_KEYS.GROUPS) || '[]'); }
+function setGroups(groups){ localStorage.setItem(STORAGE_KEYS.GROUPS, JSON.stringify(groups)); }
+
+/* Messages helpers */
+function getMessages(){ return JSON.parse(localStorage.getItem(STORAGE_KEYS.MESSAGES) || '{}'); }
+function setMessages(msgs){ localStorage.setItem(STORAGE_KEYS.MESSAGES, JSON.stringify(msgs)); }
+
+/* Notifications array (simple) */
+function addNotification(text){
+  const el = document.getElementById('notifList');
+  const prev = el.textContent.trim();
+  el.textContent = (prev==='Nenhuma notificação' ? text : text + ' • ' + prev);
+}
+
+/* Simple toast */
+function toast(msg,ok=true){
+  const el = document.createElement('div');
+  el.textContent = msg;
+  el.style.position='fixed'; el.style.right='18px'; el.style.bottom='18px';
+  el.style.background = ok ? 'linear-gradient(90deg,#00e5ff,#8c3aed)' : 'linear-gradient(90deg,#ff6b6b,#ff9a9a)';
+  el.style.color='#051320'; el.style.padding='10px 14px'; el.style.borderRadius='10px'; el.style.boxShadow='0 6px 40px rgba(0,0,0,.5)';
+  document.body.appendChild(el);
+  setTimeout(()=> el.style.opacity='0', 2500);
+  setTimeout(()=> el.remove(), 3500);
+}
+
+/* ============================
+   UI: render produtos e grupos
+   ============================ */
+
+function renderProducts(){
+  const prodWrap = document.getElementById('products');
+  prodWrap.innerHTML = '';
+  const products = JSON.parse(localStorage.getItem(STORAGE_KEYS.PRODUCTS));
+  products.forEach(p=>{
+    const card = document.createElement('div');
+    card.className = 'product-card glass';
+    card.innerHTML = `
+      ${p.price ? `<div class="tag small">Preço estimado: ${Number(p.price).toLocaleString()} MZN</div>` : ''}
+      <img src="${p.id === 'p_s23' ? 'S23.jpg' : p.id.includes('iphone') ? 'iphone 13 (2).jpg' : 'placeholder.jpg'}" alt="${p.name}">
+      <h4>${p.name}</h4>
+      <p class="small">${p.brand} • Grade ${p.grade}</p>
+      <div class="card-actions">
+        <button class="btn btn-primary btn-small" data-action="join-xitique" data-product="${p.id}">Entrar via Xitique</button>
+        <button class="btn btn-ghost btn-small" data-action="create-group" data-product="${p.id}">Criar Grupo</button>
+      </div>
+    `;
+    prodWrap.appendChild(card);
+  });
+}
+
+/* Render available groups */
+function renderGroupsList(){
+  const wrap = document.getElementById('groupsList');
+  const groups = getGroups();
+  const products = JSON.parse(localStorage.getItem(STORAGE_KEYS.PRODUCTS));
+  wrap.innerHTML = '';
+  if(groups.length === 0){
+    wrap.innerHTML = `<div class="small">Ainda não há grupos. Crie um!</div>`;
+    return;
+  }
+  groups.slice().reverse().forEach(g=>{
+    const prod = products.find(x=>x.id===g.productId) || {};
+    const members = g.members || [];
+    const filled = members.length;
+    const pct = Math.round((filled / g.size) * 100);
+    const div = document.createElement('div');
+    div.className = 'group-card';
+    div.innerHTML = `
+      <div class="group-left">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <strong style="display:block">${prod.name || g.productId}</strong>
+            <div class="small">${g.size} pessoas • ${g.period} • ${g.value.toLocaleString()} MZN/rodada</div>
+          </div>
+          <div class="tag">${g.status}</div>
+        </div>
+        <div class="progress"><div style="width:${pct}%"></div></div>
+        <div style="margin-top:8px" class="small">Prazo: ${new Date(g.formBy).toLocaleString()}</div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px; align-items:flex-end;">
+        <button class="btn btn-primary btn-small" data-action="open-group" data-id="${g.id}">Abrir</button>
+        <button class="btn btn-ghost btn-small" data-action="join-group" data-id="${g.id}">Entrar</button>
+      </div>
+    `;
+    wrap.appendChild(div);
+  });
+}
+
+/* populate select with products */
+function populateCreateSelect(){
+  const sel = document.getElementById('createProduct');
+  sel.innerHTML = '';
+  const products = JSON.parse(localStorage.getItem(STORAGE_KEYS.PRODUCTS));
+  products.forEach(p=> sel.insertAdjacentHTML('beforeend', `<option value="${p.id}">${p.name} • Est. ${p.price.toLocaleString()} MZN</option>`));
+}
+
+/* ===============
+   EVENTS & UI INIT
+   =============== */
+
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Dropzone Preview
+renderProducts();
+renderGroupsList();
+populateCreateSelect();
+updateUIUser();
+
+/* quick login/save user */
+document.getElementById('btnLoginQuick').addEventListener('click', ()=>{
+  const nome = document.getElementById('nome').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  if(!nome || !phone){ toast('Preencha nome e WhatsApp', false); return; }
+  const user = { id: 'u_'+phone, name: nome, phone: phone, reputation: 0, createdAt: now() };
+  saveCurrentUser(user);
+  // ensure wallet exists
+  const w = getWallet(); if(!w[user.id]) { w[user.id] = 0; setWallet(w); }
+  toast('Conta salva. Bem vindo ' + nome);
+  updateUIUser();
+  renderGroupsList();
+});
+
+/* deposit into wallet (simulação) */
+document.getElementById('btnDeposit').addEventListener('click', ()=>{
+  const user = getCurrentUser();
+  if(!user){ toast('Faça login (preencha nome/WhatsApp) antes de depositar', false); return; }
+  const value = Number(document.getElementById('depositAmount').value || 0);
+  if(value <= 0){ toast('Valor inválido', false); return; }
+  // Simular pagamento via M-Pesa → aqui ligar API real
+  addToWallet(user.id, value, 'deposit');
+  toast('Depósito recebido: ' + value.toLocaleString() + ' MZN');
+  updateUIUser();
+});
+
+/* Create Group */
+document.getElementById('btnCreateGroup').addEventListener('click', ()=>{
+  const user = getCurrentUser();
+  if(!user){ toast('Faça login antes de criar um grupo', false); return; }
+  const productId = document.getElementById('createProduct').value;
+  const size = Number(document.getElementById('createSize').value) || 6;
+  const value = Number(document.getElementById('createValue').value) || 5000;
+  const period = document.getElementById('createPeriod').value;
+  const deadlineDays = Number(document.getElementById('createDeadline').value) || 14;
+  const groups = getGroups();
+  const id = uid('g');
+  const group = {
+    id,
+    productId,
+    size,
+    value,
+    period,
+    status: 'forming', // forming | active | finished | failed
+    members: [], // { userId, paidRounds:0, deposit: value }
+    createdAt: now(),
+    formBy: now() + daysToMs(deadlineDays),
+    currentRound: 0,
+    logs: [`Grupo criado por ${user.name} (${user.id})`]
+  };
+  groups.push(group);
+  setGroups(groups);
+  toast('Grupo criado. Pede aos membros que entrem e paguem a 1ª parcela.');
+  renderGroupsList();
+});
+
+/* Demo: popular 2 grupos */
+document.getElementById('btnDemoFill').addEventListener('click', ()=>{
+  const products = JSON.parse(localStorage.getItem(STORAGE_KEYS.PRODUCTS));
+  const groups = getGroups();
+  groups.push({
+    id: uid('g'),
+    productId: products[0].id,
+    size: 6,
+    value: 5000,
+    period: 'weekly',
+    status: 'forming',
+    members: [],
+    createdAt: now(),
+    formBy: now() + daysToMs(7),
+    currentRound: 0,
+    logs: ['Demo group']
+  });
+  groups.push({
+    id: uid('g'),
+    productId: products[2].id,
+    size: 8,
+    value: 7000,
+    period: 'monthly',
+    status: 'forming',
+    members: [],
+    createdAt: now(),
+    formBy: now() + daysToMs(14),
+    currentRound: 0,
+    logs: ['Demo group 2']
+  });
+  setGroups(groups);
+  renderGroupsList();
+  toast('2 grupos demo adicionados');
+});
+
+/* Product card actions (delegation) */
+document.getElementById('products').addEventListener('click', (e)=>{
+  const btn = e.target.closest('button');
+  if(!btn) return;
+  const action = btn.dataset.action;
+  const productId = btn.dataset.product;
+  if(action === 'join-xitique'){
+    // open modal creating a quick group search
+    // open list of groups for this product or create new
+    openGroupsForProduct(productId);
+  } else if(action === 'create-group'){
+    document.getElementById('createProduct').value = productId;
+    window.scrollTo({ top: document.getElementById('createPanel').offsetTop - 80, behavior: 'smooth' });
+  }
+});
+
+/* Groups list actions (join/open) */
+document.getElementById('groupsList').addEventListener('click', (e)=>{
+  const btn = e.target.closest('button');
+  if(!btn) return;
+  const action = btn.dataset.action;
+  const id = btn.dataset.id;
+  if(action === 'open-group'){
+    openGroupModal(id);
+  } else if(action === 'join-group'){
+    attemptJoinGroup(id);
+  }
+});
+
+/* Open Xitique page */
+document.getElementById('ctaXitique').addEventListener('click', ()=>{
+  window.scrollTo({ top: document.querySelector('.xitique-wrap').offsetTop - 80, behavior: 'smooth' });
+});
+document.getElementById('btnOpenXitique').addEventListener('click', ()=>{
+  window.scrollTo({ top: document.querySelector('.xitique-wrap').offsetTop - 80, behavior: 'smooth' });
+});
+
+/* Quick "Entrar / Perfil" button opens top form */
+document.getElementById('btnOpenLogin').addEventListener('click', ()=>{
+  window.scrollTo({ top: document.getElementById('pedido').offsetTop - 80, behavior: 'smooth' });
+});
+
+/* Send quote (keeps original Cloudinary upload) */
+document.getElementById('btnSendQuote').addEventListener('click', async ()=>{
+  const nome = document.getElementById('nome').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  if(!nome || !phone){ toast('Preencha nome e WhatsApp', false); return; }
+  // save user quick
+  const user = { id: 'u_'+phone, name: nome, phone: phone, reputation: 0, createdAt: now() };
+  saveCurrentUser(user);
+  // simulate Cloudinary upload and submit (kept simple)
+  const fileInput = document.getElementById('fileInput');
+  if(fileInput.files.length === 0){
+    toast('Envie ao menos uma imagem para cotação', false);
+    return;
+  }
+  // For demo: we just notify and pretend the upload happened.
+  toast('Cotação recebida. Em breve responderemos via WhatsApp.');
+});
+
+/* Dropzone preview logic (preserve original behaviour) */
 const dz = document.getElementById('dropzone');
 const fileInput = document.getElementById('fileInput');
 const previews = document.getElementById('previews');
-
 dz.addEventListener('dragover', e=>{e.preventDefault(); dz.style.borderColor='var(--pri)';});
 dz.addEventListener('dragleave', ()=>{dz.style.borderColor='rgba(0,229,255,.35)';});
 dz.addEventListener('drop', async e=>{e.preventDefault(); dz.style.borderColor='rgba(0,229,255,.35)'; const f=e.dataTransfer.files[0]; await handleFile(f);});
 fileInput.addEventListener('change', async e=>{const f=e.target.files[0]; await handleFile(f);});
-
 let selectedFile = null;
 async function handleFile(f){
+  if(!f) { return; }
   if(!f.type.startsWith('image/')) { alert('Apenas imagens'); return; }
   selectedFile = f;
   previews.innerHTML = `<div class="thumb"><img src="${URL.createObjectURL(f)}"><button type="button" class="x" onclick="previews.innerHTML='';selectedFile=null;fileInput.value='';">✕</button></div>`;
   previews.hidden=false; document.getElementById('dzEmpty').hidden=true;
 }
 
-// Configuração Cloudinary
-const CLOUD_NAME = "dfycprdka";
-const UPLOAD_PRESET = "two line";
+/* ============================
+   GROUP / JOIN / PAYMENT LOGIC
+   ============================ */
 
-// Envio do formulário
-document.getElementById('quoteForm').addEventListener('submit', async (e)=>{
-  e.preventDefault();
-  const statusEl = document.getElementById('status');
-  statusEl.textContent = "⏳ Enviando...";
-
-  const nome = document.getElementById('nome').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-
-  if(!selectedFile){
-    statusEl.textContent = "❌ Selecione uma imagem.";
+/* Open groups filtered by product (small helper) */
+function openGroupsForProduct(productId){
+  // find groups for this product
+  const groups = getGroups().filter(g=>g.productId === productId && g.status === 'forming');
+  if(groups.length === 0){
+    toast('Ainda não há grupos formados para este modelo. Crie um grupo!');
+    document.getElementById('createProduct').value = productId;
+    document.getElementById('createPanel').scrollIntoView({behavior:'smooth'});
     return;
   }
+  renderGroupsList();
+  // open the first matching group modal for convenience
+  openGroupModal(groups[0].id);
+}
 
-  try {
-    const formData = new FormData();
-    formData.append("file", selectedFile);
-    formData.append("upload_preset", UPLOAD_PRESET);
-    formData.append("context", `nome=${nome}|phone=${phone}`);
+/* Attempt to join a group (triggers deposit) */
+async function attemptJoinGroup(groupId){
+  const user = getCurrentUser();
+  if(!user){ toast('Faça login (preencha nome/WhatsApp) antes de entrar no grupo', false); window.scrollTo({top: document.getElementById('pedido').offsetTop - 80}); return; }
+  const groups = getGroups();
+  const g = groups.find(x=>x.id===groupId);
+  if(!g) { toast('Grupo não encontrado', false); return; }
+  if(g.status !== 'forming'){ toast('Grupo já não está a formar (status: ' + g.status + ')', false); return; }
+  const already = g.members.find(m => m.userId === user.id);
+  if(already){ toast('Já és membro deste grupo', false); openGroupModal(groupId); return; }
 
-    const cloudRes = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/upload`, {
-      method:"POST",
-      body: formData
-    });
-    const cloudData = await cloudRes.json();
-    console.log("Upload Cloudinary:", cloudData);
+  // deposit = 1st parcel required to guarantee
+  const deposit = Number(g.value);
+  const balance = getBalance(user.id);
+  if(balance < deposit){
+    toast('Saldo insuficiente. Deposita primeiro na carteira', false);
+    return;
+  }
+  // debit from wallet (simulate real payment)
+  const w = getWallet();
+  w[user.id] -= deposit;
+  setWallet(w);
 
-    statusEl.textContent = "✅ Enviado com sucesso!";
-    document.getElementById('quoteForm').reset();
-    previews.innerHTML="";
-    selectedFile = null;
-    document.getElementById('dzEmpty').hidden=false;
+  // add member
+  g.members.push({ userId: user.id, paidRounds: 0, deposit: deposit, joinedAt: now(), reputation: 0 });
+  g.logs = g.logs || [];
+  g.logs.push(`${user.name} entrou e pagou 1ª parcela (${deposit.toLocaleString()} MZN)`);
 
-  } catch(err){
-    console.error(err);
-    statusEl.textContent = "❌ Ocorreu um erro ao enviar.";
+  // save groups
+  setGroups(groups);
+  toast('Entraste no grupo e pagaste a 1ª parcela.');
+  addNotification(`${user.name} entrou no grupo ${g.id}`);
+  renderGroupsList();
+  openGroupModal(groupId);
+  // check if group full and start if so
+  checkStartGroup(g.id);
+}
+
+/* open group modal and populate */
+function openGroupModal(groupId){
+  const groups = getGroups();
+  const g = groups.find(x=>x.id===groupId);
+  if(!g) return;
+  const products = JSON.parse(localStorage.getItem(STORAGE_KEYS.PRODUCTS));
+  const prod = products.find(x=>x.id===g.productId) || {name:g.productId};
+  document.getElementById('modalTitle').textContent = `${prod.name} — Grupo ${g.id}`;
+  document.getElementById('modalDesc').innerHTML = `
+    ${g.size} participantes • Parcela: <strong>${g.value.toLocaleString()} MZN</strong><br>
+    Periodicidade: ${g.period} • Prazo de formação: ${new Date(g.formBy).toLocaleString()}<br>
+    Status: <strong>${g.status}</strong>
+  `;
+  // progress
+  const pct = Math.round((g.members.length / g.size) * 100);
+  document.getElementById('modalProgress').style.width = pct + '%';
+  // members list
+  const membersWrap = document.getElementById('modalMembers');
+  membersWrap.innerHTML = '';
+  g.members.forEach(m=>{
+    const user = m.userId ? (getCurrentUser().id === m.userId ? getCurrentUser() : { id: m.userId, name: m.userId.split('_')[1] || 'Usuário' }) : {name:'Anónimo'};
+    const pill = document.createElement('div');
+    pill.className='member-pill';
+    pill.innerHTML = `${user.name} • pagos: ${m.paidRounds}`;
+    membersWrap.appendChild(pill);
+  });
+
+  // logs
+  document.getElementById('groupLogs').textContent = (g.logs || []).slice().reverse().join('\n');
+
+  // chat
+  renderGroupChat(g.id);
+
+  // contributions
+  renderContributions(g.id);
+
+  // show/hide buttons depending on membership
+  const user = getCurrentUser();
+  if(user && g.members.some(m=>m.userId === user.id)){
+    document.getElementById('btnJoinGroup').style.display = 'none';
+    document.getElementById('btnLeaveGroup').style.display = 'inline-block';
+    // if it's user's turn to receive a payout, show claim button
+    const myIndex = g.order ? g.order.indexOf(user.id) : -1;
+    if(g.status === 'active' && g.currentRound < g.size && myIndex === g.currentRound){
+      document.getElementById('btnClaimPayout').style.display = 'inline-block';
+    } else {
+      document.getElementById('btnClaimPayout').style.display = 'none';
+    }
+  } else {
+    document.getElementById('btnJoinGroup').style.display = 'inline-block';
+    document.getElementById('btnLeaveGroup').style.display = 'none';
+    document.getElementById('btnClaimPayout').style.display = 'none';
+  }
+
+  document.getElementById('modalGroup').classList.add('show');
+}
+
+/* close modal */
+document.getElementById('closeModal').addEventListener('click', ()=> document.getElementById('modalGroup').classList.remove('show'));
+
+/* Leave group / request refund */
+document.getElementById('btnLeaveGroup').addEventListener('click', ()=>{
+  const gid = getCurrentModalGroupId();
+  if(!gid) return; const groups = getGroups(); const g = groups.find(x=>x.id===gid);
+  const user = getCurrentUser();
+  if(!user) return;
+  const idx = g.members.findIndex(m=>m.userId === user.id);
+  if(idx === -1) return;
+  // refund deposit only if group hasn't started
+  if(g.status === 'forming'){
+    const deposit = g.members[idx].deposit || g.value;
+    // give back to wallet
+    addToWallet(user.id, deposit, 'refund');
+    g.logs.push(`${user.name} saiu antes do início. Reembolso: ${deposit}`);
+    g.members.splice(idx,1);
+    setGroups(groups);
+    toast('Solicitação processada: depósito reembolsado.');
+    updateUIUser(); renderGroupsList(); openGroupModal(g.id);
+  } else {
+    toast('Grupo já iniciou. Regras de desistência variam, contata suporte.', false);
   }
 });
+
+/* Get group id from modal title (quick helper) */
+function getCurrentModalGroupId(){
+  const title = document.getElementById('modalTitle').textContent;
+  const match = title.match(/Grupo\s(g_[^\s]+)/);
+  if(!match) return null;
+  return match[1];
+}
+
+/* check and start group if full */
+function checkStartGroup(groupId){
+  const groups = getGroups(); const g = groups.find(x=>x.id===groupId);
+  if(!g) return;
+  if(g.status === 'forming' && g.members.length >= g.size){
+    // set to active, determine order randomly
+    const order = g.members.map(m=>m.userId).sort(()=>Math.random()-0.5);
+    g.order = order; // array of userId in receiving order
+    g.status = 'active';
+    g.currentRound = 0;
+    g.logs.push('Grupo iniciado. Ordem definida: ' + order.join(', '));
+    setGroups(groups);
+    toast('Grupo começou! Ordem sorteada e pagamentos semanais/mensais iniciados.');
+    // notify members
+    order.forEach(uId => addNotification(`Grupo ${groupId}: ${uId} entrou na ordem`));
+    renderGroupsList();
+    openGroupModal(groupId);
+  }
+}
+
+/* Periodic check: groups formation deadline expiry -> refund or convert */
+function formationDeadlineCheck(){
+  const groups = getGroups(); let changed=false;
+  groups.forEach(g=>{
+    if(g.status === 'forming' && now() > g.formBy){
+      // group didn't close in time
+      if(g.members.length < g.size){
+        // by default: reembolsar deposíto aos membros (poderia oferecer poupança individual)
+        const members = g.members || [];
+        members.forEach(m=>{
+          addToWallet(m.userId, m.deposit || g.value, 'refund_group_not_full');
+        });
+        g.logs.push('Grupo falhou na formação — reembolsos realizados.');
+        g.status = 'failed';
+        changed=true;
+      }
+    }
+  });
+  if(changed) { setGroups(groups); renderGroupsList(); updateUIUser(); }
+}
+setInterval(formationDeadlineCheck, 10 * 1000); // checar a cada 10s (demo)
+
+/* render chat for group */
+function renderGroupChat(groupId){
+  const msgs = getMessages();
+  const list = msgs[groupId] || [];
+  const chatBox = document.getElementById('chatBox');
+  chatBox.innerHTML = '';
+  list.forEach(m=>{
+    const who = m.name || m.userId || 'Anónimo';
+    const div = document.createElement('div'); div.className='msg';
+    div.innerHTML = `<div class="who">${who} <span class="small" style="color:var(--muted);font-weight:500">• ${new Date(m.time).toLocaleString()}</span></div>
+                     <div class="txt">${m.text}</div>`;
+    chatBox.appendChild(div);
+  });
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+/* send chat */
+document.getElementById('btnSendChat').addEventListener('click', ()=>{
+  const gid = getCurrentModalGroupId(); if(!gid) return;
+  const text = document.getElementById('chatInput').value.trim(); if(!text) return;
+  const user = getCurrentUser() || {id:'guest', name:'Convidado'};
+  const msgs = getMessages();
+  msgs[gid] = msgs[gid] || [];
+  msgs[gid].push({ userId: user.id, name: user.name, text, time: now() });
+  setMessages(msgs); document.getElementById('chatInput').value='';
+  renderGroupChat(gid);
+});
+
+/* contributions rendering */
+function renderContributions(groupId){
+  const groups = getGroups(); const g = groups.find(x=>x.id===groupId);
+  if(!g) return;
+  const el = document.getElementById('contribs');
+  const rows = [];
+  const round = g.currentRound || 0;
+  rows.push(`Rodada atual: ${round+1} de ${g.size}`);
+  rows.push(`Beneficiário desta rodada: ${ (g.order && g.order[round]) ? (g.order[round].split('_')[1] || g.order[round]) : '—' }`);
+  rows.push('Pagamentos:');
+  g.members.forEach(m=>{
+    const paid = m.paidRounds || 0;
+    rows.push(`- ${m.userId.split('_')[1] || m.userId}: pagos ${paid}`);
+  });
+  el.innerHTML = rows.join('\n');
+}
+
+/* pay my parcel for current round */
+document.getElementById('btnPayNow').addEventListener('click', ()=>{
+  const gid = getCurrentModalGroupId(); if(!gid) { toast('Abra um grupo primeiro', false); return; }
+  const groups = getGroups(); const g = groups.find(x=>x.id===gid);
+  const user = getCurrentUser(); if(!user){ toast('Faça login', false); return; }
+  if(!g) return;
+  if(g.status !== 'active'){ toast('Grupo não ativo', false); return; }
+  // find member entry
+  const member = g.members.find(m=>m.userId === user.id);
+  if(!member){ toast('Não és membro deste grupo', false); return; }
+  const required = Number(g.value);
+  if(getBalance(user.id) < required){ toast('Saldo insuficiente. Deposita na carteira', false); return; }
+  // debit wallet
+  const w = getWallet();
+  w[user.id] -= required; setWallet(w);
+  member.paidRounds = (member.paidRounds || 0) + 1;
+  g.logs.push(`${user.name} pagou a parcela da rodada ${g.currentRound + 1} (${required})`);
+  setGroups(groups);
+  toast('Pagamento efetuado. Obrigado!');
+  renderGroupsList(); renderContributions(g.id); updateUIUser();
+  // after every member pays for this round, we can collect
+  attemptAutoCollectRound(g.id);
+});
+
+/* admin button to collect rounds (simulate webhook) */
+document.getElementById('btnAutoCollect').addEventListener('click', ()=>{
+  const gid = getCurrentModalGroupId(); if(!gid) return;
+  attemptAutoCollectRound(gid, true);
+});
+
+/* attempt auto-collect round: if all members paid for currentRound, pay out to beneficiary */
+function attemptAutoCollectRound(groupId, force=false){
+  const groups = getGroups(); const g = groups.find(x=>x.id===groupId);
+  if(!g || g.status !== 'active') return;
+  const round = g.currentRound || 0;
+  // all members must have paidRounds >= round+1
+  const allPaid = g.members.every(m=> (m.paidRounds || 0) >= (round + 1));
+  if(!allPaid && !force){ toast('Ainda nem todos pagaram a rodada', false); return; }
+  // compute pot
+  const pot = g.members.length * g.value;
+  const receiverId = g.order[round];
+  // For safety, instead of transfer to cash, we mark as "blocked for purchase"
+  // We add a record to transactions and to group's logs
+  g.logs.push(`Rodada ${round+1} completa. Pot: ${pot.toLocaleString()} MZN. Beneficiário: ${receiverId}`);
+  // track payout in localStorage (simple)
+  const payouts = JSON.parse(localStorage.getItem('cx_payouts') || '{}');
+  payouts[g.id] = payouts[g.id] || [];
+  payouts[g.id].push({ round: round+1, to: receiverId, amount: pot, purchased:false, time: now() });
+  localStorage.setItem('cx_payouts', JSON.stringify(payouts));
+  // increment round
+  g.currentRound = round + 1;
+  if(g.currentRound >= g.size){
+    g.status = 'finished';
+    g.logs.push('Grupo concluído com sucesso.');
+  }
+  setGroups(groups);
+  toast('Rodada coletada. Beneficiário: ' + (receiverId.split('_')[1] || receiverId));
+  addNotification(`Grupo ${g.id}: rodada ${round+1} paga.`);
+  renderGroupsList(); renderContributions(g.id); openGroupModal(g.id); updateUIUser();
+}
+
+/* Claim payout (when it's your turn) -> opens a purchase modal/flow */
+document.getElementById('btnClaimPayout').addEventListener('click', ()=>{
+  const gid = getCurrentModalGroupId(); if(!gid) return;
+  const payouts = JSON.parse(localStorage.getItem('cx_payouts') || '{}');
+  const list = payouts[gid] || [];
+  const g = getGroups().find(x=>x.id===gid);
+  const user = getCurrentUser();
+  if(!user) return;
+  // find last payout for which user is beneficiary and not purchased
+  const myP = list.find(p => p.to === user.id && !p.purchased);
+  if(!myP){ toast('Não há bolada disponível para aquisição neste momento.', false); return; }
+  // We'll simulate "purchase" by marking purchased true and create an order object
+  myP.purchased = true;
+  myP.purchasedAt = now();
+  // In production, here you'd call your order creation API to place the product import & shipment
+  localStorage.setItem('cx_payouts', JSON.stringify(payouts));
+  const groups = getGroups();
+  const gg = groups.find(x=>x.id===gid);
+  gg.logs.push(`${user.name} utilizou a bolada (rodada ${myP.round}) para realizar uma compra: ${myP.amount.toLocaleString()} MZN.`);
+  setGroups(groups);
+  toast('Parabéns — bolada marcada para compra. Aguarde instruções via WhatsApp.');
+  renderGroupsList(); openGroupModal(gid);
+});
+
+/* ============================
+   UTILS: UI updates and others
+   ============================ */
+
+function updateUIUser(){
+  const user = getCurrentUser();
+  document.getElementById('userName').textContent = user ? user.name : 'Convidado';
+  const walletBalance = user ? getBalance(user.id) : 0;
+  document.getElementById('walletBalance').textContent = walletBalance.toLocaleString() + ' MZN';
+  // list my groups
+  if(user){
+    const groups = getGroups();
+    const mine = groups.filter(g => g.members.some(m=>m.userId === user.id));
+    if(mine.length === 0) document.getElementById('myGroups').textContent = 'Ainda não participas de grupos';
+    else document.getElementById('myGroups').innerHTML = mine.map(g=>`<div class="small">#${g.id} • ${g.status} • ${g.members.length}/${g.size}</div>`).join('');
+  }
+}
+
+/* open group modal by id (public) */
+function openGroupModalByUI(gid){ openGroupModal(gid); }
+
+/* attach global click handlers for actions inside modal: join, leave etc. */
+document.getElementById('btnJoinGroup').addEventListener('click', ()=>{
+  const gid = getCurrentModalGroupId();
+  if(!gid) return;
+  attemptJoinGroup(gid);
+});
+
+/* initial render */
+updateUIUser();
+
+/* Clicking outside modal should close it */
+document.getElementById('modalGroup').addEventListener('click', (e)=>{
+  if(e.target === document.getElementById('modalGroup')) document.getElementById('modalGroup').classList.remove('show');
+});
+
+/* Periodic housekeeping: merge compatible groups (demo): if two forming groups same product & similar value, merge them automatically */
+function autoMergeGroups(){
+  const groups = getGroups();
+  const forming = groups.filter(g=>g.status==='forming');
+  const byKey = {};
+  forming.forEach(g=>{
+    const key = `${g.productId}_${g.value}_${g.period}`;
+    byKey[key] = byKey[key] || [];
+    byKey[key].push(g);
+  });
+  let changed=false;
+  Object.values(byKey).forEach(list=>{
+    if(list.length >= 2){
+      // merge smallest two
+      const [a,b] = list.slice(0,2);
+      a.size = Math.max(a.size, a.size + b.size); // for demo: combine capacities (production may differ)
+      a.members = a.members.concat(b.members);
+      a.logs.push('Grupo fundido com ' + b.id);
+      // remove b
+      const idx = groups.findIndex(x=>x.id===b.id);
+      groups.splice(idx,1);
+      changed=true;
+    }
+  });
+  if(changed){ setGroups(groups); renderGroupsList(); toast('Alguns grupos foram automaticamente fundidos para acelerar formação.'); }
+}
+setInterval(autoMergeGroups, 30 * 1000); // every 30s for demo
+
+/* show group modal when clicking buttons generated programmatically */
+document.addEventListener('click', (e)=>{
+  const btn = e.target.closest('[data-action="open-group"]');
+  if(btn) openGroupModal(btn.dataset.id);
+});
+
+/* update groups list when storage changes externally (multi-tab) */
+window.addEventListener('storage', (e)=>{
+  if(e.key === STORAGE_KEYS.GROUPS || e.key === STORAGE_KEYS.WALLET) {
+    renderGroupsList(); updateUIUser();
+  }
+});
+
+/* load initial demo groups if none exist (only for first-time) */
+(function initDemoIfEmpty(){
+  const groups = getGroups();
+  if(groups.length === 0){
+    // create a sample group
+    const products = JSON.parse(localStorage.getItem(STORAGE_KEYS.PRODUCTS));
+    const g = {
+      id: uid('g'),
+      productId: products[0].id,
+      size: 6,
+      value: 5000,
+      period: 'weekly',
+      status: 'forming',
+      members: [],
+      createdAt: now(),
+      formBy: now() + daysToMs(10),
+      currentRound: 0,
+      logs: ['Grupo de exemplo criado automaticamente para demo']
+    };
+    groups.push(g); setGroups(groups);
+    renderGroupsList();
+  }
+})();
+
+/* helper debug: expose some internals when pressing Ctrl+Shift+D */
+document.addEventListener('keydown', (e)=>{ if(e.ctrlKey && e.shiftKey && e.key==='D'){ console.log('WALLET', getWallet()); console.log('GROUPS', getGroups()); console.log('PAYOUTS', localStorage.getItem('cx_payouts')); alert('Debug logs no console'); } });
+
 </script>
+
 </body>
 </html>
